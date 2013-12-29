@@ -9,6 +9,9 @@ Bundle 'gmarik/vundle'
 filetype plugin indent on
 
 " Bundles to install
+Bundle "MarcWeber/vim-addon-mw-utils.git"
+Bundle "honza/vim-snippets"
+Bundle 'garbas/vim-snipmate.git'
 Bundle 'godlygeek/tabular.git'
 Bundle 'tpope/vim-fugitive.git'
 Bundle 'tpope/vim-surround.git'
