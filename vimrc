@@ -62,6 +62,9 @@ set ruler
 " Hide the buffer when abandoned
 set hidden
 
+" No sounds
+set visualbell
+
 " Font type and size
 if has("mac")
     set guifont=Monaco:h12
