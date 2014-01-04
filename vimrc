@@ -91,6 +91,12 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
+" Open splits at bottom
+set splitbelow
+
+" Open vertical splits at right
+set splitright
+
 " Smart way to move between buffers
 map <M-D-Right> :tabnext<cr>
 imap <M-D-Right> <esc>:tabnext<cr>a
