@@ -10,10 +10,11 @@ filetype plugin indent on
 
 " Bundles to install
 Bundle 'MarcWeber/vim-addon-mw-utils.git'
-Bundle 'honza/vim-snippets'
-Bundle 'scrooloose/syntastic.git'
 Bundle 'garbas/vim-snipmate.git'
 Bundle 'godlygeek/tabular.git'
+Bundle 'honza/vim-snippets'
+Bundle 'scrooloose/syntastic.git'
+Bundle 'terryma/vim-multiple-cursors'
 Bundle 'tpope/vim-fugitive.git'
 Bundle 'tpope/vim-surround.git'
 
