@@ -9,8 +9,9 @@ Bundle 'gmarik/vundle'
 filetype plugin indent on
 
 " Bundles to install
-Bundle "MarcWeber/vim-addon-mw-utils.git"
-Bundle "honza/vim-snippets"
+Bundle 'MarcWeber/vim-addon-mw-utils.git'
+Bundle 'honza/vim-snippets'
+Bundle 'scrooloose/syntastic.git'
 Bundle 'garbas/vim-snipmate.git'
 Bundle 'godlygeek/tabular.git'
 Bundle 'tpope/vim-fugitive.git'
@@ -20,12 +21,12 @@ Bundle 'tpope/vim-surround.git'
 Bundle 'altercation/vim-colors-solarized.git'
 
 " GUI Options
-if has("gui_running")
+if has('gui_running')
     set guioptions-=T "Disable toolbar
     set guioptions-=m "Disable menu bar
 endif
 
-if has("autocmd")
+if has('autocmd')
     "Auto source .vimrc file when save it
     autocmd! BufWritePost .vimrc source $MYVIMRC
 
@@ -69,7 +70,7 @@ set hidden
 set visualbell
 
 " Font type and size
-if has("mac")
+if has('mac')
     set guifont=Monaco:h12
 endif
 
@@ -120,3 +121,9 @@ set backupdir=~/.tmp
 
 " Change the directory of swp files
 set directory=~/.tmp
+
+" Syntastic options
+" -----------------
+
+" Check syntax on open
+let g:syntastic_check_on_open = 1
