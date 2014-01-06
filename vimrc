@@ -44,6 +44,9 @@ syntax enable
 set background=dark
 silent! colorscheme solarized
 
+" Automatically load a file changed outside
+set autoread
+
 " Enable autoindent
 set autoindent
 
