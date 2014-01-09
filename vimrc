@@ -21,6 +21,10 @@ Bundle 'tpope/vim-repeat.git'
 Bundle 'tpope/vim-surround.git'
 Bundle 'tpope/vim-unimpaired'
 
+" Bundles required by vim-snipmate
+Bundle 'MarcWeber/vim-addon-mw-utils'
+Bundle 'tomtom/tlib_vim'
+
 " Colorschemes
 Bundle 'altercation/vim-colors-solarized.git'
 
