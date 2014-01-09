@@ -17,6 +17,7 @@ Bundle 'scrooloose/syntastic.git'
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'tpope/vim-commentary.git'
 Bundle 'tpope/vim-fugitive.git'
+Bundle 'tpope/vim-repeat.git'
 Bundle 'tpope/vim-surround.git'
 Bundle 'tpope/vim-unimpaired'
 
