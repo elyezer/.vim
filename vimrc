@@ -65,6 +65,9 @@ set backspace=eol,start,indent
 " Highlight current line
 set cursorline
 
+" Always use utf-8
+set encoding=utf-8
+
 " Show line numbers
 set number
 
