@@ -12,6 +12,7 @@ filetype plugin indent on
 Bundle 'MarcWeber/vim-addon-mw-utils.git'
 Bundle 'garbas/vim-snipmate.git'
 Bundle 'godlygeek/tabular.git'
+Bundle 'hdima/python-syntax.git'
 Bundle 'honza/vim-snippets'
 Bundle 'jmcantrell/vim-virtualenv.git'
 Bundle 'scrooloose/syntastic.git'
@@ -146,3 +147,9 @@ let g:syntastic_check_on_open=1
 
 " Checkers for Python
 let g:syntastic_python_checkers=['pylint', 'pep8', 'python']
+
+" Python syntax options
+" ---------------------
+
+" Enable all syntax highlighting features
+let python_highlight_all=1
