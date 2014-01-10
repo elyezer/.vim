@@ -59,14 +59,17 @@ set autoread
 " Enable autoindent
 set autoindent
 
+" Backspace configuration
+set backspace=eol,start,indent
+
 " Highlight current line
 set cursorline
 
 " Show line numbers
 set number
 
-" Backspace configuration
-set backspace=eol,start,indent
+" Enable mouse support in terminal
+set mouse=a
 
 " Always show cursor postion
 set ruler
