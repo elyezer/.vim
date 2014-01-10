@@ -142,4 +142,7 @@ set directory=~/.tmp
 " -----------------
 
 " Check syntax on open
-let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_open=1
+
+" Checkers for Python
+let g:syntastic_python_checkers=['pylint', 'pep8', 'python']
