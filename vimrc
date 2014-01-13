@@ -37,9 +37,28 @@ if has('gui_running')
     set guioptions-=m "Disable menu bar
 endif
 
+" Strip trailing whitespace
+function! Preserve(command)
+    " Preparation: save last search, and cursor position.
+    let _s=@/
+    let l = line(".")
+    let c = col(".")
+    " Do the business:
+    execute a:command
+    " Clean up: restore previous search history, and cursor position
+    let @/=_s
+    call cursor(l, c)
+endfunction
+
+" Map to strip trailing whitespace
+nmap _$ :call Preserve("%s/\\s\\+$//e")<CR>
+
 if has('autocmd')
     "Auto source .vimrc file when save it
     autocmd! BufWritePost .vimrc source $MYVIMRC
+
+    " Strip trailing whitespace on save
+    autocmd! BufWritePre * :call Preserve("%s/\\s\\+$//e")
 
     "In python files use spaces intead of tabs
     autocmd FileType python setlocal expandtab
