@@ -102,6 +102,9 @@ set ruler
 " Hide the buffer when abandoned
 set hidden
 
+" Show the filename in the window titlebar
+set title
+
 " No sounds
 set visualbell
 
