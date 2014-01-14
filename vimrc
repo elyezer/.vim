@@ -102,6 +102,9 @@ set ruler
 " Hide the buffer when abandoned
 set hidden
 
+" Keep some lines visible when scrolling
+set scrolloff=3
+
 " Show the filename in the window titlebar
 set title
 
