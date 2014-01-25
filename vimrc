@@ -68,6 +68,9 @@ if has('autocmd')
 
     autocmd FileType css,html setlocal expandtab shiftwidth=2 tabstop=2
                                        \ softtabstop=2
+
+    " Set spell on git commit messages
+    autocmd FileType gitcommit setlocal spell
 endif
 
 " Fast edit .vimrc file
