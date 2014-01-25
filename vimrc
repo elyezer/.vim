@@ -63,11 +63,7 @@ if has('autocmd')
     " Strip trailing whitespace on save
     autocmd! BufWritePre * :call Preserve("%s/\\s\\+$//e")
 
-    "In python files use spaces intead of tabs
-    autocmd FileType python setlocal expandtab
-
-    autocmd FileType css,html setlocal expandtab shiftwidth=2 tabstop=2
-                                       \ softtabstop=2
+    autocmd FileType css,html setlocal shiftwidth=2 tabstop=2 softtabstop=2
 
     " Set spell on git commit messages
     autocmd FileType gitcommit setlocal spell
@@ -126,6 +122,7 @@ endif
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
+set expandtab
 set shiftround
 set smarttab
 
