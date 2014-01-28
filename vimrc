@@ -176,7 +176,7 @@ set directory=~/.tmp
 let g:syntastic_check_on_open=1
 
 " Checkers for Python
-let g:syntastic_python_checkers=['pylint', 'pep8', 'python']
+let g:syntastic_python_checkers=['flake8', 'pylint', 'python']
 
 " Python syntax options
 " ---------------------
