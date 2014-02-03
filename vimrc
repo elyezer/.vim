@@ -16,6 +16,7 @@ Bundle 'godlygeek/tabular.git'
 Bundle 'hdima/python-syntax.git'
 Bundle 'honza/vim-snippets'
 Bundle 'hynek/vim-python-pep8-indent.git'
+Bundle 'itchyny/lightline.vim'
 Bundle 'jmcantrell/vim-virtualenv.git'
 Bundle 'kien/ctrlp.vim'
 Bundle 'scrooloose/syntastic.git'
@@ -183,3 +184,21 @@ let g:syntastic_python_checkers=['flake8', 'pylint', 'python']
 
 " Enable all syntax highlighting features
 let python_highlight_all=1
+
+" Lightline options
+" -----------------
+
+let g:lightline = {
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'fugitive', 'filename', 'modified' ] ]
+      \ },
+      \ 'component': {
+      \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
+      \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
+      \ },
+      \ 'component_visible_condition': {
+      \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
+      \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
+      \ },
+      \ }
