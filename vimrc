@@ -19,6 +19,7 @@ Bundle 'hynek/vim-python-pep8-indent.git'
 Bundle 'itchyny/lightline.vim'
 Bundle 'jmcantrell/vim-virtualenv.git'
 Bundle 'kien/ctrlp.vim'
+Bundle 'mattn/gist-vim.git'
 Bundle 'scrooloose/syntastic.git'
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'tpope/vim-abolish.git'
@@ -32,6 +33,9 @@ Bundle 'tpope/vim-unimpaired'
 " Bundles required by vim-snipmate
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'tomtom/tlib_vim'
+
+" Bundle required by gist-vim bundle
+Bundle 'mattn/webapi-vim.git'
 
 " Colorschemes
 Bundle 'altercation/vim-colors-solarized.git'
