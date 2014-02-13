@@ -202,7 +202,8 @@ let g:lightline = {
       \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" },
       \ 'component': {
       \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
-      \   'fugitive': '%{exists("*fugitive#head")?"\ue0a0 ".fugitive#head():""}'
+      \   'fugitive': '%{exists("*fugitive#head")&&strlen(fugitive#head())?'.
+      \               '"\ue0a0 ".fugitive#head():""}'
       \ },
       \ 'component_visible_condition': {
       \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
