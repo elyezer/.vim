@@ -169,6 +169,11 @@ set completeopt=menu,menuone,preview "Show the menu when have only one complete 
 " Map omnicomplete shortcut
 inoremap <C-Space> <C-x><C-o>
 
+" Create backup directory if not exists
+if exists("*mkdir") && empty(glob('~/.tmp'))
+    call mkdir($HOME . '/.tmp')
+endif
+
 " Change backup directory
 set backupdir=~/.tmp
 
