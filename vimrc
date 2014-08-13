@@ -8,6 +8,8 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " Bundles to install
+Plugin 'SirVer/ultisnips'
+Plugin 'Yggdroot/indentLine'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'godlygeek/tabular'
@@ -17,6 +19,7 @@ Plugin 'hynek/vim-python-pep8-indent'
 Plugin 'itchyny/lightline.vim'
 Plugin 'jmcantrell/vim-virtualenv'
 Plugin 'kien/ctrlp.vim'
+Plugin 'majutsushi/tagbar'
 Plugin 'mattn/gist-vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'terryma/vim-multiple-cursors'
@@ -27,7 +30,6 @@ Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-tbone'
 Plugin 'tpope/vim-unimpaired'
-Plugin 'SirVer/ultisnips'
 
 " Bundle required by gist-vim bundle
 Plugin 'mattn/webapi-vim'
