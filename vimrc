@@ -3,43 +3,40 @@ set nocompatible
 filetype off
 
 " Vundle setup
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-Bundle 'gmarik/vundle'
-filetype plugin indent on
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'gmarik/Vundle.vim'
 
 " Bundles to install
-Bundle 'MarcWeber/vim-addon-mw-utils.git'
-Bundle 'airblade/vim-gitgutter.git'
-Bundle 'davidhalter/jedi-vim.git'
-Bundle 'garbas/vim-snipmate.git'
-Bundle 'godlygeek/tabular.git'
-Bundle 'hdima/python-syntax.git'
-Bundle 'honza/vim-snippets'
-Bundle 'hynek/vim-python-pep8-indent.git'
-Bundle 'itchyny/lightline.vim'
-Bundle 'jmcantrell/vim-virtualenv.git'
-Bundle 'kien/ctrlp.vim'
-Bundle 'mattn/gist-vim.git'
-Bundle 'scrooloose/syntastic.git'
-Bundle 'terryma/vim-multiple-cursors'
-Bundle 'tpope/vim-abolish.git'
-Bundle 'tpope/vim-commentary.git'
-Bundle 'tpope/vim-fugitive.git'
-Bundle 'tpope/vim-repeat.git'
-Bundle 'tpope/vim-surround.git'
-Bundle 'tpope/vim-tbone.git'
-Bundle 'tpope/vim-unimpaired'
-
-" Bundles required by vim-snipmate
-Bundle 'MarcWeber/vim-addon-mw-utils'
-Bundle 'tomtom/tlib_vim'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'davidhalter/jedi-vim'
+Plugin 'godlygeek/tabular'
+Plugin 'hdima/python-syntax'
+Plugin 'honza/vim-snippets'
+Plugin 'hynek/vim-python-pep8-indent'
+Plugin 'itchyny/lightline.vim'
+Plugin 'jmcantrell/vim-virtualenv'
+Plugin 'kien/ctrlp.vim'
+Plugin 'mattn/gist-vim'
+Plugin 'scrooloose/syntastic'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'tpope/vim-abolish'
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-tbone'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'SirVer/ultisnips'
 
 " Bundle required by gist-vim bundle
-Bundle 'mattn/webapi-vim.git'
+Plugin 'mattn/webapi-vim'
 
 " Colorschemes
-Bundle 'altercation/vim-colors-solarized.git'
+Plugin 'altercation/vim-colors-solarized'
+
+call vundle#end()
+filetype plugin indent on
 
 " GUI Options
 if has('gui_running')
