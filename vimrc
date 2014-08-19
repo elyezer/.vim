@@ -141,6 +141,10 @@ set ignorecase
 set incsearch
 set smartcase
 
+" Wildcard command-line completion
+set wildmenu " Show completions above the command-line
+set wildmode=list:longest " Complete only until point of ambiguity.
+
 " Smart way to move between windows
 map <C-j> <C-W>j
 map <C-k> <C-W>k
