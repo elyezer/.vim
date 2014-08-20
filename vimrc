@@ -140,6 +140,7 @@ set listchars=tab:▸\ ,trail:·,eol:¬ "Change tab, trail and eol characters
 set ignorecase
 set incsearch
 set smartcase
+set gdefault " Add g flag by default
 
 " Wildcard command-line completion
 set wildmenu " Show completions above the command-line
