@@ -73,6 +73,9 @@ if has('autocmd')
 
     " Set spell on git commit messages
     autocmd FileType gitcommit setlocal spell
+
+    " Better editing options for reStructuredText files
+    autocmd FileType rst setlocal spell textwidth=79
 endif
 
 " Fast edit .vimrc file
