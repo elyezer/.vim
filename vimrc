@@ -14,6 +14,7 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 " Bundles to install
+NeoBundle 'Shougo/vimshell.vim'
 NeoBundle 'SirVer/ultisnips'
 NeoBundle 'Yggdroot/indentLine'
 NeoBundle 'airblade/vim-gitgutter'
@@ -40,6 +41,17 @@ NeoBundle 'tpope/vim-unimpaired'
 
 " Bundle required by gist-vim bundle
 NeoBundle 'mattn/webapi-vim'
+
+" Bundle required by vimshell
+NeoBundle 'Shougo/vimproc.vim', {
+\ 'build' : {
+\     'windows' : 'tools\\update-dll-mingw',
+\     'cygwin' : 'make -f make_cygwin.mak',
+\     'mac' : 'make -f make_mac.mak',
+\     'linux' : 'make',
+\     'unix' : 'gmake',
+\    },
+\ }
 
 " Colorschemes
 NeoBundle 'altercation/vim-colors-solarized'
