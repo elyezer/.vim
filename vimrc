@@ -2,42 +2,49 @@
 set nocompatible
 filetype off
 
-" Vundle setup
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'gmarik/Vundle.vim'
+if has('vim_starting')
+  set nocompatible               " Be iMproved
+
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
+
+call neobundle#begin(expand('~/.vim/bundle/'))
+
+" Let NeoBundle manage NeoBundle
+NeoBundleFetch 'Shougo/neobundle.vim'
 
 " Bundles to install
-Plugin 'SirVer/ultisnips'
-Plugin 'Yggdroot/indentLine'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'davidhalter/jedi-vim'
-Plugin 'godlygeek/tabular'
-Plugin 'hdima/python-syntax'
-Plugin 'honza/vim-snippets'
-Plugin 'hynek/vim-python-pep8-indent'
-Plugin 'itchyny/lightline.vim'
-Plugin 'jmcantrell/vim-virtualenv'
-Plugin 'kien/ctrlp.vim'
-Plugin 'majutsushi/tagbar'
-Plugin 'mattn/gist-vim'
-Plugin 'scrooloose/syntastic'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'tpope/vim-abolish'
-Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-tbone'
-Plugin 'tpope/vim-unimpaired'
+NeoBundle 'SirVer/ultisnips'
+NeoBundle 'Yggdroot/indentLine'
+NeoBundle 'airblade/vim-gitgutter'
+NeoBundle 'davidhalter/jedi-vim'
+NeoBundle 'godlygeek/tabular'
+NeoBundle 'hdima/python-syntax'
+NeoBundle 'honza/vim-snippets'
+NeoBundle 'hynek/vim-python-pep8-indent'
+NeoBundle 'itchyny/lightline.vim'
+NeoBundle 'jmcantrell/vim-virtualenv'
+NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'majutsushi/tagbar'
+NeoBundle 'mattn/gist-vim'
+NeoBundle 'scrooloose/syntastic'
+NeoBundle 'terryma/vim-multiple-cursors'
+NeoBundle 'tpope/vim-abolish'
+NeoBundle 'tpope/vim-commentary'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'tpope/vim-repeat'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'tpope/vim-tbone'
+NeoBundle 'tpope/vim-unimpaired'
 
 " Bundle required by gist-vim bundle
-Plugin 'mattn/webapi-vim'
+NeoBundle 'mattn/webapi-vim'
 
 " Colorschemes
-Plugin 'altercation/vim-colors-solarized'
+NeoBundle 'altercation/vim-colors-solarized'
 
-call vundle#end()
+call neobundle#end()
+
 filetype plugin indent on
 
 " GUI Options
@@ -186,6 +193,10 @@ set backupdir=~/.tmp
 
 " Change the directory of swp files
 set directory=~/.tmp
+
+" NeoBundle options
+" -----------------
+NeoBundleCheck
 
 " Syntastic options
 " -----------------
