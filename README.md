@@ -11,8 +11,9 @@ To install just clone the repo inside you home directory and execute the command
 ```
 git clone git@github.com:elyezer/.vim.git
 ln -s ~/.vim/vimrc ~/.vimrc
-git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-vim +BundleInstall +qall
+mkdir -p ~/.vim/bundle
+git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
+vim +qall
 ```
 
 After running the commands, next time you start vim it will be already configured.
