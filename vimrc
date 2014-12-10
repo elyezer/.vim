@@ -252,16 +252,18 @@ let g:lightline = {
 
 let g:indentLine_char = '│'
 
-if &background == "dark"
-    if g:solarized_termcolors == 256
-        let g:indentLine_color_term=235
+if exists('g:solarized_termcolors')
+    if &background == "dark"
+        if g:solarized_termcolors == 256
+            let g:indentLine_color_term=235
+        else
+            let g:indentLine_color_term=0
+        endif
     else
-        let g:indentLine_color_term=0
-    endif
-else
-    if g:solarized_termcolors == 256
-        let g:indentLine_color_term=187
-    else
-        let g:indentLine_color_term=7
+        if g:solarized_termcolors == 256
+            let g:indentLine_color_term=187
+        else
+            let g:indentLine_color_term=7
+        endif
     endif
 endif
