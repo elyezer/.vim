@@ -62,6 +62,7 @@ filetype plugin indent on
 
 " GUI Options
 if has('gui_running')
+    set guifont=Source\ Code\ Pro\ for\ Powerline:h13
     set guioptions-=T "Disable toolbar
     set guioptions-=m "Disable menu bar
 endif
@@ -141,11 +142,6 @@ set title
 
 " No sounds
 set visualbell
-
-" Font type and size
-if has('mac')
-    set guifont=Monaco:h12
-endif
 
 " Tab stuff
 set tabstop=4
