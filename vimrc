@@ -1,11 +1,17 @@
-" Be iMproved
-set nocompatible
 filetype off
 
 if has('vim_starting')
-  set nocompatible               " Be iMproved
+  " Be iMproved
+  set nocompatible
 
   set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
+
+if !filereadable(expand('~/.vim/bundle/neobundle.vim/README.md'))
+  echo 'Installing NeoBundle...'
+  echo ''
+  silent !mkdir -p ~/.vim/bundle
+  silent !git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim/
 endif
 
 call neobundle#begin(expand('~/.vim/bundle/'))
