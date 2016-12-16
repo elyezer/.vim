@@ -102,7 +102,7 @@ if has('autocmd')
     autocmd FileType gitcommit setlocal spell
 
     " Better editing options for reStructuredText files
-    autocmd FileType rst setlocal spell textwidth=79
+    autocmd FileType rst setlocal spell
 endif
 
 " Fast edit .vimrc file
@@ -145,6 +145,9 @@ set hidden
 
 " Keep some lines visible when scrolling
 set scrolloff=3
+
+" Maximum width of text that is being inserted
+set textwidth=79
 
 " Show the filename in the window titlebar
 set title
