@@ -128,6 +128,9 @@ set cursorline
 " Always use utf-8
 set encoding=utf-8
 
+" Show line numbers
+set number
+
 " Show relative line numbers
 set relativenumber
 
