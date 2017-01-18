@@ -1,70 +1,52 @@
-filetype off
-
 if has('vim_starting')
-  " Be iMproved
-  set nocompatible
-
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
+    " Be iMproved
+    set nocompatible
 endif
 
-if !filereadable(expand('~/.vim/bundle/neobundle.vim/README.md'))
-  echo 'Installing NeoBundle...'
-  echo ''
-  silent !mkdir -p ~/.vim/bundle
-  silent !git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim/
+if !filereadable(expand('~/.vim/autoload/plug.vim'))
+    echo 'Installing vim-plug...'
+    echo ''
+    silent !curl -fLso ~/.vim/autoload/plug.vim --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+    " Install plugins after loading vim
+    autocmd VimEnter * PlugInstall
 endif
 
-call neobundle#begin(expand('~/.vim/bundle/'))
-
-" Let NeoBundle manage NeoBundle
-NeoBundleFetch 'Shougo/neobundle.vim'
+call plug#begin('~/.vim/plugged')
 
 " Bundles to install
-NeoBundle 'Shougo/vimshell.vim'
-NeoBundle 'SirVer/ultisnips'
-NeoBundle 'Yggdroot/indentLine'
-NeoBundle 'airblade/vim-gitgutter'
-NeoBundle 'davidhalter/jedi-vim'
-NeoBundle 'godlygeek/tabular'
-NeoBundle 'hdima/python-syntax'
-NeoBundle 'honza/vim-snippets'
-NeoBundle 'hynek/vim-python-pep8-indent'
-NeoBundle 'itchyny/lightline.vim'
-NeoBundle 'jmcantrell/vim-virtualenv'
-NeoBundle 'kien/ctrlp.vim'
-NeoBundle 'majutsushi/tagbar'
-NeoBundle 'mattn/gist-vim'
-NeoBundle 'scrooloose/syntastic'
-NeoBundle 'terryma/vim-multiple-cursors'
-NeoBundle 'tommcdo/vim-exchange'
-NeoBundle 'tpope/vim-abolish'
-NeoBundle 'tpope/vim-commentary'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'tpope/vim-repeat'
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'tpope/vim-tbone'
-NeoBundle 'tpope/vim-unimpaired'
+Plug 'SirVer/ultisnips'
+Plug 'Yggdroot/indentLine'
+Plug 'airblade/vim-gitgutter'
+Plug 'davidhalter/jedi-vim'
+Plug 'godlygeek/tabular'
+Plug 'hdima/python-syntax'
+Plug 'honza/vim-snippets'
+Plug 'hynek/vim-python-pep8-indent'
+Plug 'itchyny/lightline.vim'
+Plug 'jmcantrell/vim-virtualenv'
+Plug 'kien/ctrlp.vim'
+Plug 'majutsushi/tagbar'
+Plug 'mattn/gist-vim'
+Plug 'scrooloose/syntastic'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'tommcdo/vim-exchange'
+Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-tbone'
+Plug 'tpope/vim-unimpaired'
 
 " Bundle required by gist-vim bundle
-NeoBundle 'mattn/webapi-vim'
-
-" Bundle required by vimshell
-NeoBundle 'Shougo/vimproc.vim', {
-\ 'build' : {
-\     'windows' : 'tools\\update-dll-mingw',
-\     'cygwin' : 'make -f make_cygwin.mak',
-\     'mac' : 'make -f make_mac.mak',
-\     'linux' : 'make',
-\     'unix' : 'gmake',
-\    },
-\ }
+Plug 'mattn/webapi-vim'
 
 " Colorschemes
-NeoBundle 'altercation/vim-colors-solarized'
+Plug 'altercation/vim-colors-solarized'
 
-call neobundle#end()
-
-filetype plugin indent on
+call plug#end()
 
 " GUI Options
 if has('gui_running')
@@ -215,9 +197,11 @@ set backupdir=~/.tmp
 " Change the directory of swp files
 set directory=~/.tmp
 
-" NeoBundle options
-" -----------------
-NeoBundleCheck
+" Plug options
+" ------------
+
+" Command to open plug window
+let g:plug_window='botright new'
 
 " Syntastic options
 " -----------------
