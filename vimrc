@@ -216,6 +216,9 @@ let g:syntastic_check_on_wq = 0
 " Checkers for Python
 let g:syntastic_python_checkers=['flake8', 'pylint', 'python']
 
+" Checkers for RST
+let g:syntastic_rst_checkers=['rstcheck']
+
 " Python syntax options
 " ---------------------
 
