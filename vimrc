@@ -29,6 +29,7 @@ Plug 'jmcantrell/vim-virtualenv'
 Plug 'kien/ctrlp.vim'
 Plug 'majutsushi/tagbar'
 Plug 'mattn/gist-vim'
+Plug 'pearofducks/ansible-vim', { 'do': './UltiSnips/generate.py' }
 Plug 'scrooloose/syntastic'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tommcdo/vim-exchange'
