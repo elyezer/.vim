@@ -210,6 +210,9 @@ let g:plug_window='botright new'
 " Check syntax on open
 let g:syntastic_check_on_open=1
 
+" Don't check syntax when quitting
+let g:syntastic_check_on_wq = 0
+
 " Checkers for Python
 let g:syntastic_python_checkers=['flake8', 'pylint', 'python']
 
