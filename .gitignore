@@ -1,4 +1,4 @@
 .netrwhist
-autoload/plug.vim
+autoload/plug.vim*
 plugged
 spell
