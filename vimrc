@@ -198,6 +198,12 @@ set backupdir=~/.tmp
 " Change the directory of swp files
 set directory=~/.tmp
 
+" Faster and improved grep using ag (The Silver Searcher)
+if executable('ag')
+    set grepprg=ag\ --vimgrep\ $*
+    set grepformat=%f:%l:%c:%m
+endif
+
 " Plug options
 " ------------
 
@@ -263,4 +269,13 @@ if exists('g:solarized_termcolors')
             let g:indentLine_color_term=7
         endif
     endif
+endif
+
+" CtrlP options
+" -------------
+
+" Use ag to search for file names
+if executable('ag')
+    let g:ctrlp_user_command='ag %s -l --nocolor -g ""'
+    let g:ctrlp_use_caching = 0
 endif
