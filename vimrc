@@ -225,6 +225,9 @@ let g:syntastic_python_checkers=['flake8', 'pylint', 'python']
 " Checkers for RST
 let g:syntastic_rst_checkers=['rstcheck']
 
+" Syntastic status line text format
+let g:syntastic_stl_format = "\u2716 %t"
+
 " Python syntax options
 " ---------------------
 
@@ -237,16 +240,19 @@ let python_highlight_all=1
 let g:lightline = {
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'fugitive', 'filename', 'modified' ] ]
+      \             [ 'fugitive', 'filename', 'syntastic', 'modified' ] ]
       \ },
       \ 'component': {
       \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
       \   'fugitive': '%{exists("*fugitive#head")&&strlen(fugitive#head())?'.
-      \               '"\ue0a0 ".fugitive#head():""}'
+      \               '"\ue0a0 ".fugitive#head():""}',
       \ },
       \ 'component_visible_condition': {
       \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
       \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
+      \ },
+      \ 'component_function': {
+      \   'syntastic': 'SyntasticStatuslineFlag',
       \ },
       \ }
 
