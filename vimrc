@@ -204,6 +204,15 @@ if executable('ag')
     set grepformat=%f:%l:%c:%m
 endif
 
+" Mappings
+" --------
+
+if executable('uuidgen')
+    nnoremap <leader>id :execute 'normal! o' . ':id: ' . system('uuidgen')<esc>ddk==
+else
+    nnoremap <leader>id :execute 'normal! o' . ':id: ' . system('python3 -c "import uuid; print(str(uuid.uuid4()))"')<esc>ddk==
+endif
+
 " Plug options
 " ------------
 
