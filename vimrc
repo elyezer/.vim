@@ -51,7 +51,9 @@ call plug#end()
 
 " GUI Options
 if has('gui_running')
-    set guifont=Source\ Code\ Pro\ for\ Powerline:h13
+    if has('gui_gtk3')
+        set guifont=Source\ Code\ Pro\ for\ Powerline\ 13
+    endif
     set guioptions-=T "Disable toolbar
     set guioptions-=m "Disable menu bar
 endif
