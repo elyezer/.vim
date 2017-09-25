@@ -56,6 +56,7 @@ if has('gui_running')
     endif
     set guioptions-=T "Disable toolbar
     set guioptions-=m "Disable menu bar
+    set shell=/bin/bash
 endif
 
 " Strip trailing whitespace
