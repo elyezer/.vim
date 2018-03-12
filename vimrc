@@ -3,17 +3,27 @@ if has('vim_starting')
     set nocompatible
 endif
 
-if !filereadable(expand('~/.vim/autoload/plug.vim'))
+if has('nvim')
+    let s:plug_path = '~/.local/share/nvim/site/autoload/plug.vim'
+    let s:plugged_path = '~/.local/share/nvim/plugged'
+    let g:python_host_prog = '/usr/bin/python2'
+    let g:python3_host_prog = '/usr/bin/python3'
+else
+    let s:plug_path = '~/.vim/autoload/plug.vim'
+    let s:plugged_path = '~/.vim/plugged'
+endif
+
+if !filereadable(expand(s:plug_path))
     echo 'Installing vim-plug...'
     echo ''
-    silent !curl -fLso ~/.vim/autoload/plug.vim --create-dirs
-        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    execute "silent !curl -fLo " . s:plug_path . " --create-dirs "
+        \ "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
 
     " Install plugins after loading vim
     autocmd VimEnter * PlugInstall
 endif
 
-call plug#begin('~/.vim/plugged')
+call plug#begin(s:plugged_path)
 
 " Bundles to install
 Plug 'SirVer/ultisnips'
