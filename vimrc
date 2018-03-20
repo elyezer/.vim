@@ -29,6 +29,7 @@ call plug#begin(s:plugged_path)
 Plug 'SirVer/ultisnips'
 Plug 'Yggdroot/indentLine'
 Plug 'airblade/vim-gitgutter'
+Plug 'cohama/lexima.vim'
 Plug 'davidhalter/jedi-vim'
 Plug 'godlygeek/tabular'
 Plug 'hdima/python-syntax'
@@ -40,6 +41,7 @@ Plug 'kien/ctrlp.vim'
 Plug 'majutsushi/tagbar'
 Plug 'mattn/gist-vim'
 Plug 'pearofducks/ansible-vim', { 'do': './UltiSnips/generate.py' }
+Plug 'sheerun/vim-polyglot'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tommcdo/vim-exchange'
 Plug 'tpope/vim-abolish'
@@ -50,6 +52,11 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-tbone'
 Plug 'tpope/vim-unimpaired'
 Plug 'w0rp/ale'
+
+" Neovim only plugins
+if has('nvim')
+    Plug 'roxma/nvim-completion-manager'
+endif
 
 " Bundle required by gist-vim bundle
 Plug 'mattn/webapi-vim'
