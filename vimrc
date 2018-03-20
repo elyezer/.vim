@@ -40,7 +40,6 @@ Plug 'kien/ctrlp.vim'
 Plug 'majutsushi/tagbar'
 Plug 'mattn/gist-vim'
 Plug 'pearofducks/ansible-vim', { 'do': './UltiSnips/generate.py' }
-Plug 'scrooloose/syntastic'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tommcdo/vim-exchange'
 Plug 'tpope/vim-abolish'
@@ -50,6 +49,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-tbone'
 Plug 'tpope/vim-unimpaired'
+Plug 'w0rp/ale'
 
 " Bundle required by gist-vim bundle
 Plug 'mattn/webapi-vim'
@@ -232,23 +232,21 @@ endif
 " Command to open plug window
 let g:plug_window='botright new'
 
-" Syntastic options
-" -----------------
+" ALE options
+" -----------
 
-" Check syntax on open
-let g:syntastic_check_on_open=1
+let g:ale_linters = {
+\   'python': ['flake8'],
+\   'rst': ['rstcheck'],
+\}
 
-" Don't check syntax when quitting
-let g:syntastic_check_on_wq = 0
-
-" Checkers for Python
-let g:syntastic_python_checkers=['flake8', 'python']
-
-" Checkers for RST
-let g:syntastic_rst_checkers=['rstcheck']
-
-" Syntastic status line text format
-let g:syntastic_stl_format = "\u2716 %t"
+function! ALEStatusline() abort
+    let l:counts = ale#statusline#Count(bufnr(''))
+    return l:counts.total == 0 ? '' : printf(
+    \   "\u2716 %d",
+    \   l:counts.total,
+    \)
+endfunction
 
 " Python syntax options
 " ---------------------
@@ -262,7 +260,7 @@ let python_highlight_all=1
 let g:lightline = {
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'fugitive', 'filename', 'syntastic', 'modified' ] ]
+      \             [ 'fugitive', 'filename', 'ale', 'modified' ] ]
       \ },
       \ 'component': {
       \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
@@ -274,7 +272,7 @@ let g:lightline = {
       \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
       \ },
       \ 'component_function': {
-      \   'syntastic': 'SyntasticStatuslineFlag',
+      \   'ale': 'ALEStatusline',
       \ },
       \ }
 
