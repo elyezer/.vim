@@ -36,6 +36,7 @@ Plug 'hdima/python-syntax'
 Plug 'honza/vim-snippets'
 Plug 'hynek/vim-python-pep8-indent'
 Plug 'itchyny/lightline.vim'
+Plug 'janko-m/vim-test'
 Plug 'jmcantrell/vim-virtualenv'
 Plug 'kien/ctrlp.vim'
 Plug 'majutsushi/tagbar'
@@ -311,4 +312,13 @@ endif
 if executable('ag')
     let g:ctrlp_user_command='ag %s -l --nocolor -g ""'
     let g:ctrlp_use_caching = 0
+endif
+
+" vim-test options
+" ----------------
+
+" Prefer pytest whenever it is available
+if executable('py.test')
+    let test#python#runner = 'pytest'
+    let test#python#pytest#options = '-v'
 endif
