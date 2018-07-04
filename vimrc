@@ -117,6 +117,11 @@ syntax enable
 set background=dark
 silent! colorscheme solarized
 
+if has('nvim')
+    highlight! link TermCursor Cursor
+    highlight! TermCursorNC guibg=red guifg=white ctermbg=1 ctermfg=15
+endif
+
 " Automatically load a file changed outside
 set autoread
 
@@ -227,6 +232,11 @@ endif
 
 " Mappings
 " --------
+
+if has('nvim')
+    tnoremap <esc> <c-\><c-n>
+    tnoremap <C-v><esc> <esc>
+endif
 
 if executable('uuidgen')
     nnoremap <leader>id :execute 'normal! o' . ':id: ' . system('uuidgen')<esc>ddk==
