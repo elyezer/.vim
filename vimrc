@@ -322,3 +322,10 @@ if executable('py.test')
     let test#python#runner = 'pytest'
     let test#python#pytest#options = '-v'
 endif
+
+" mappings
+nnoremap tf :TestFile<cr>
+nnoremap tl :TestLast<cr>
+nnoremap tn :TestNearest<cr>
+nnoremap ts :TestSuite<cr>
+nnoremap tv :TestVisit<cr>
