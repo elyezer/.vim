@@ -56,7 +56,13 @@ Plug 'w0rp/ale'
 
 " Neovim only plugins
 if has('nvim')
-    Plug 'roxma/nvim-completion-manager'
+    Plug 'ncm2/ncm2'
+    Plug 'ncm2/ncm2-bufword'
+    Plug 'ncm2/ncm2-jedi'
+    Plug 'ncm2/ncm2-path'
+
+    " Required by ncm2
+    Plug 'roxma/nvim-yarp'
 endif
 
 " Bundle required by gist-vim bundle
@@ -207,8 +213,8 @@ imap <M-D-Left> <esc>:tabprevious<cr>a
 " Always show status line
 set laststatus=2
 
-" Enable omnicomplete
-set completeopt=menu,menuone,preview "Show the menu when have only one complete option
+" Set completeopt
+set completeopt=noinsert,menuone,noselect
 
 " Map omnicomplete shortcut
 inoremap <C-Space> <C-x><C-o>
@@ -339,3 +345,9 @@ nnoremap tl :TestLast<cr>
 nnoremap tn :TestNearest<cr>
 nnoremap ts :TestSuite<cr>
 nnoremap tv :TestVisit<cr>
+
+" NCM2 options
+" ------------
+if has('nvim')
+    autocmd BufEnter * call ncm2#enable_for_buffer()
+endif
