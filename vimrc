@@ -53,9 +53,11 @@ Plug 'w0rp/ale'
 " Neovim only plugins
 if has('nvim')
     Plug 'ncm2/ncm2'
+    Plug 'fgrsnau/ncm2-otherbuf', { 'branch': 'ncm2' }
     Plug 'ncm2/ncm2-bufword'
     Plug 'ncm2/ncm2-jedi'
     Plug 'ncm2/ncm2-path'
+    Plug 'ncm2/ncm2-ultisnips'
 
     " Required by ncm2
     Plug 'roxma/nvim-yarp'
