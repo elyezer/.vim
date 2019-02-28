@@ -29,6 +29,7 @@ call plug#begin(s:plugged_path)
 Plug 'SirVer/ultisnips'
 Plug 'Yggdroot/indentLine'
 Plug 'airblade/vim-gitgutter'
+Plug 'ambv/black',
 Plug 'cohama/lexima.vim'
 Plug 'godlygeek/tabular'
 Plug 'honza/vim-snippets'
