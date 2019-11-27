@@ -350,3 +350,8 @@ nnoremap tv :TestVisit<cr>
 if has('nvim')
     autocmd BufEnter * call ncm2#enable_for_buffer()
 endif
+
+" vim-markdown options
+" --------------------
+let g:vim_markdown_conceal = 0
+let g:vim_markdown_conceal_code_blocks = 0
