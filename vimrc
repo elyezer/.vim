@@ -54,7 +54,7 @@ Plug 'w0rp/ale'
 " Neovim only plugins
 if has('nvim')
     Plug 'ncm2/ncm2'
-    Plug 'fgrsnau/ncm2-otherbuf', { 'branch': 'ncm2' }
+    Plug 'fgrsnau/ncm2-otherbuf'
     Plug 'ncm2/ncm2-bufword'
     Plug 'ncm2/ncm2-jedi'
     Plug 'ncm2/ncm2-path'
