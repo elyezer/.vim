@@ -68,7 +68,8 @@ endif
 Plug 'mattn/webapi-vim'
 
 " Colorschemes
-Plug 'altercation/vim-colors-solarized'
+Plug 'gruvbox-community/gruvbox'
+
 
 call plug#end()
 
@@ -120,7 +121,7 @@ nmap <leader>e :e! $MYVIMRC<cr>
 " Define the colorscheme for syntax highlight
 syntax enable
 set background=dark
-silent! colorscheme solarized
+silent! colorscheme gruvbox
 
 if has('nvim')
     highlight! link TermCursor Cursor
