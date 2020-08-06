@@ -36,7 +36,8 @@ Plug 'honza/vim-snippets'
 Plug 'itchyny/lightline.vim'
 Plug 'janko-m/vim-test'
 Plug 'jmcantrell/vim-virtualenv'
-Plug 'kien/ctrlp.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'majutsushi/tagbar'
 Plug 'mattn/gist-vim'
 Plug 'pearofducks/ansible-vim', { 'do': './UltiSnips/generate.py' }
@@ -322,14 +323,11 @@ if exists('g:solarized_termcolors')
     endif
 endif
 
-" CtrlP options
-" -------------
+" FZF options
+" -----------
 
-" Use ag to search for file names
-if executable('ag')
-    let g:ctrlp_user_command='ag %s -l --nocolor -g ""'
-    let g:ctrlp_use_caching = 0
-endif
+" mappings
+nnoremap <C-p> :Files<CR>
 
 " vim-test options
 " ----------------
