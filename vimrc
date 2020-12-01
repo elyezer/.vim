@@ -6,7 +6,7 @@ endif
 if has('nvim')
     let s:plug_path = '~/.local/share/nvim/site/autoload/plug.vim'
     let s:plugged_path = '~/.local/share/nvim/plugged'
-    let g:python_host_prog = '/usr/bin/python2'
+    let g:python_host_prog = '/usr/bin/python3'
     let g:python3_host_prog = '/usr/bin/python3'
 else
     let s:plug_path = '~/.vim/autoload/plug.vim'
