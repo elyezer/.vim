@@ -232,8 +232,11 @@ set backupdir=~/.tmp
 " Change the directory of swp files
 set directory=~/.tmp
 
-" Faster and improved grep using ag (The Silver Searcher)
-if executable('ag')
+" Faster and improved grep using either rg or ag (The Silver Searcher)
+if executable('rg')
+    set grepprg=rg\ --vimgrep\ $*
+    set grepformat=%f:%l:%c:%m
+elseif executable('ag')
     set grepprg=ag\ --vimgrep\ $*
     set grepformat=%f:%l:%c:%m
 endif
