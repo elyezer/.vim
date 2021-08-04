@@ -52,15 +52,8 @@ Plug 'w0rp/ale'
 
 if has('nvim')
     " Neovim only plugins
-    Plug 'ncm2/ncm2'
-    Plug 'fgrsnau/ncm2-otherbuf'
-    Plug 'ncm2/ncm2-bufword'
-    Plug 'ncm2/ncm2-jedi'
-    Plug 'ncm2/ncm2-path'
-    Plug 'ncm2/ncm2-ultisnips'
-
-    " Required by ncm2
-    Plug 'roxma/nvim-yarp'
+    Plug 'hrsh7th/nvim-compe'
+    Plug 'neovim/nvim-lspconfig'
 
     Plug 'nvim-lua/popup.nvim'
     Plug 'nvim-lua/plenary.nvim'
@@ -358,13 +351,60 @@ nnoremap tn :TestNearest<cr>
 nnoremap ts :TestSuite<cr>
 nnoremap tv :TestVisit<cr>
 
-" NCM2 options
-" ------------
+" lspconfig
+" ---------
 if has('nvim')
-    autocmd BufEnter * call ncm2#enable_for_buffer()
+lua << EOF
+require'lspconfig'.bashls.setup{}
+require'lspconfig'.dockerls.setup{}
+require'lspconfig'.jsonls.setup {}
+require'lspconfig'.pyright.setup{}
+require'lspconfig'.vimls.setup{}
+require'lspconfig'.yamlls.setup{}
+EOF
+
+if filereadable(expand('~/code/groovy-language-server/build/libs/groovy-language-server-all.jar'))
+lua << EOF
+groovyls_path = vim.api.nvim_call_function('expand', {'~/code/groovy-language-server/build/libs/groovy-language-server-all.jar'})
+require'lspconfig'.groovyls.setup{
+    cmd = { "java", "-jar", groovyls_path},
+}
+EOF
+endif
 endif
 
 " vim-markdown options
 " --------------------
 let g:vim_markdown_conceal = 0
 let g:vim_markdown_conceal_code_blocks = 0
+
+" nvim-compe
+" ----------
+if has('nvim')
+lua << EOF
+require'compe'.setup {
+  enabled = true;
+  autocomplete = true;
+  debug = false;
+  min_length = 1;
+  preselect = 'enable';
+  throttle_time = 80;
+  source_timeout = 200;
+  incomplete_delay = 400;
+  max_abbr_width = 100;
+  max_kind_width = 100;
+  max_menu_width = 100;
+  documentation = true;
+
+  source = {
+    buffer = true;
+    calc = true;
+    nvim_lsp = true;
+    nvim_lua = true;
+    path = true;
+    ultisnips = true;
+    vsnip = true;
+  };
+}
+EOF
+endif
