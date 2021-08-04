@@ -36,8 +36,6 @@ Plug 'honza/vim-snippets'
 Plug 'itchyny/lightline.vim'
 Plug 'janko-m/vim-test'
 Plug 'jmcantrell/vim-virtualenv'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
 Plug 'majutsushi/tagbar'
 Plug 'mattn/gist-vim'
 Plug 'pearofducks/ansible-vim', { 'do': './UltiSnips/generate.py' }
@@ -52,8 +50,8 @@ Plug 'tpope/vim-tbone'
 Plug 'tpope/vim-unimpaired'
 Plug 'w0rp/ale'
 
-" Neovim only plugins
 if has('nvim')
+    " Neovim only plugins
     Plug 'ncm2/ncm2'
     Plug 'fgrsnau/ncm2-otherbuf'
     Plug 'ncm2/ncm2-bufword'
@@ -63,6 +61,14 @@ if has('nvim')
 
     " Required by ncm2
     Plug 'roxma/nvim-yarp'
+
+    Plug 'nvim-lua/popup.nvim'
+    Plug 'nvim-lua/plenary.nvim'
+    Plug 'nvim-telescope/telescope.nvim'
+else
+    " Use fzf on vim
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    Plug 'junegunn/fzf.vim'
 endif
 
 " Bundle required by gist-vim bundle
@@ -326,11 +332,15 @@ if exists('g:solarized_termcolors')
     endif
 endif
 
-" FZF options
-" -----------
+" Fuzzy finder options
+" --------------------
 
 " mappings
-nnoremap <C-p> :Files<CR>
+if has('nvim')
+    nnoremap <C-p> :Telescope find_files<cr>
+else
+    nnoremap <C-p> :Files<cr>
+endif
 
 " vim-test options
 " ----------------
