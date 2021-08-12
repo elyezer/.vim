@@ -38,7 +38,6 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-tbone'
 Plug 'tpope/vim-unimpaired'
-Plug 'w0rp/ale'
 
 Plug 'hrsh7th/nvim-compe'
 Plug 'neovim/nvim-lspconfig'
@@ -242,22 +241,6 @@ endif
 " Command to open plug window
 let g:plug_window='botright new'
 
-" ALE options
-" -----------
-
-let g:ale_linters = {
-\   'python': ['flake8'],
-\   'rst': ['rstcheck'],
-\}
-
-function! ALEStatusline() abort
-    let l:counts = ale#statusline#Count(bufnr(''))
-    return l:counts.total == 0 ? '' : printf(
-    \   "\u2716 %d",
-    \   l:counts.total,
-    \)
-endfunction
-
 " Python syntax options
 " ---------------------
 
@@ -270,7 +253,7 @@ let python_highlight_all=1
 let g:lightline = {
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'fugitive', 'filename', 'ale', 'modified' ] ]
+      \             [ 'fugitive', 'filename', 'modified' ] ]
       \ },
       \ 'component': {
       \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
@@ -280,9 +263,6 @@ let g:lightline = {
       \ 'component_visible_condition': {
       \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
       \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
-      \ },
-      \ 'component_function': {
-      \   'ale': 'ALEStatusline',
       \ },
       \ }
 
