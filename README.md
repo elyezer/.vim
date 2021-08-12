@@ -16,7 +16,7 @@ Next, run the following:
 
 ```console
 $ mkdir -p ~/.config/nvim
-$ ln -s ~/.vim/vimrc ~/.config/nvim/init.vim
+$ ln -s ~/.vim/init.vim ~/.config/nvim/init.vim
 $ nvim
 ```
 
