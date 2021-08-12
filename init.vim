@@ -1,17 +1,7 @@
-if has('vim_starting')
-    " Be iMproved
-    set nocompatible
-endif
-
-if has('nvim')
-    let s:plug_path = '~/.local/share/nvim/site/autoload/plug.vim'
-    let s:plugged_path = '~/.local/share/nvim/plugged'
-    let g:python_host_prog = '/usr/bin/python3'
-    let g:python3_host_prog = '/usr/bin/python3'
-else
-    let s:plug_path = '~/.vim/autoload/plug.vim'
-    let s:plugged_path = '~/.vim/plugged'
-endif
+let s:plug_path = '~/.local/share/nvim/site/autoload/plug.vim'
+let s:plugged_path = '~/.local/share/nvim/plugged'
+let g:python_host_prog = '/usr/bin/python3'
+let g:python3_host_prog = '/usr/bin/python3'
 
 if !filereadable(expand(s:plug_path))
     echo 'Installing vim-plug...'
@@ -50,22 +40,15 @@ Plug 'tpope/vim-tbone'
 Plug 'tpope/vim-unimpaired'
 Plug 'w0rp/ale'
 
-if has('nvim')
-    " Neovim only plugins
-    Plug 'hrsh7th/nvim-compe'
-    Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/nvim-compe'
+Plug 'neovim/nvim-lspconfig'
 
-    Plug 'nvim-lua/popup.nvim'
-    Plug 'nvim-lua/plenary.nvim'
-    Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 
-    Plug 'nvim-treesitter/nvim-treesitter'
-    Plug 'nvim-treesitter/nvim-treesitter-textobjects'
-else
-    " Use fzf on vim
-    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-    Plug 'junegunn/fzf.vim'
-endif
+Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 
 " Bundle required by gist-vim bundle
 Plug 'mattn/webapi-vim'
@@ -127,10 +110,8 @@ syntax enable
 set background=dark
 silent! colorscheme gruvbox
 
-if has('nvim')
-    highlight! link TermCursor Cursor
-    highlight! TermCursorNC guibg=red guifg=white ctermbg=1 ctermfg=15
-endif
+highlight! link TermCursor Cursor
+highlight! TermCursorNC guibg=red guifg=white ctermbg=1 ctermfg=15
 
 " Automatically load a file changed outside
 set autoread
@@ -246,10 +227,8 @@ endif
 " Mappings
 " --------
 
-if has('nvim')
-    tnoremap <esc> <c-\><c-n>
-    tnoremap <C-v><esc> <esc>
-endif
+tnoremap <esc> <c-\><c-n>
+tnoremap <C-v><esc> <esc>
 
 if executable('uuidgen')
     nnoremap <leader>id :execute 'normal! o' . ':id: ' . system('uuidgen')<esc>ddk==
@@ -332,11 +311,7 @@ endif
 " --------------------
 
 " mappings
-if has('nvim')
-    nnoremap <C-p> :Telescope find_files<cr>
-else
-    nnoremap <C-p> :Files<cr>
-endif
+nnoremap <C-p> :Telescope find_files<cr>
 
 " vim-test options
 " ----------------
@@ -356,7 +331,6 @@ nnoremap tv :TestVisit<cr>
 
 " lspconfig
 " ---------
-if has('nvim')
 lua << EOF
 require'lspconfig'.bashls.setup{}
 require'lspconfig'.dockerls.setup{}
@@ -374,7 +348,6 @@ require'lspconfig'.groovyls.setup{
 }
 EOF
 endif
-endif
 
 " vim-markdown options
 " --------------------
@@ -383,7 +356,6 @@ let g:vim_markdown_conceal_code_blocks = 0
 
 " nvim-compe
 " ----------
-if has('nvim')
 lua << EOF
 require'compe'.setup {
   enabled = true;
@@ -410,11 +382,9 @@ require'compe'.setup {
   };
 }
 EOF
-endif
 
 " nvim-treesitter options
 " -----------------------
-if has("nvim")
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
   ensure_installed = { "bash", "python", "toml", "yaml" },
@@ -439,4 +409,3 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 EOF
-endif
