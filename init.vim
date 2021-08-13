@@ -19,24 +19,18 @@ call plug#begin(s:plugged_path)
 Plug 'SirVer/ultisnips'
 Plug 'Yggdroot/indentLine'
 Plug 'airblade/vim-gitgutter'
-Plug 'ambv/black',
 Plug 'cohama/lexima.vim'
-Plug 'godlygeek/tabular'
 Plug 'honza/vim-snippets'
 Plug 'itchyny/lightline.vim'
 Plug 'janko-m/vim-test'
 Plug 'jmcantrell/vim-virtualenv'
-Plug 'majutsushi/tagbar'
-Plug 'mattn/gist-vim'
 Plug 'pearofducks/ansible-vim', { 'do': './UltiSnips/generate.py' }
 Plug 'sheerun/vim-polyglot'
-Plug 'tommcdo/vim-exchange'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-tbone'
 Plug 'tpope/vim-unimpaired'
 
 Plug 'hrsh7th/nvim-compe'
@@ -48,9 +42,6 @@ Plug 'nvim-telescope/telescope.nvim'
 
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'nvim-treesitter/nvim-treesitter-textobjects'
-
-" Bundle required by gist-vim bundle
-Plug 'mattn/webapi-vim'
 
 " Colorschemes
 Plug 'gruvbox-community/gruvbox'
