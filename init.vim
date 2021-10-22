@@ -77,7 +77,7 @@ nmap _$ :call Preserve("%s/\\s\\+$//e")<CR>
 
 if has('autocmd')
     "Auto source .vimrc file when save it
-    autocmd! BufWritePost .vimrc source $MYVIMRC
+    autocmd! BufWritePost init.vim source $MYVIMRC
 
     " Strip trailing whitespace on save
     autocmd! BufWritePre * :call Preserve("%s/\\s\\+$//e")
