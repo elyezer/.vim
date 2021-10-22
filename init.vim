@@ -33,8 +33,13 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 
-Plug 'hrsh7th/nvim-compe'
 Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'quangnguyen30192/cmp-nvim-ultisnips'
+Plug 'hrsh7th/nvim-cmp'
+
 
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
@@ -189,7 +194,7 @@ imap <M-D-Left> <esc>:tabprevious<cr>a
 set laststatus=2
 
 " Set completeopt
-set completeopt=noinsert,menuone,noselect
+set completeopt=menu,menuone,noselect
 
 " Map omnicomplete shortcut
 inoremap <C-Space> <C-x><C-o>
@@ -303,18 +308,20 @@ nnoremap tv :TestVisit<cr>
 " lspconfig
 " ---------
 lua << EOF
-require'lspconfig'.bashls.setup{}
-require'lspconfig'.dockerls.setup{}
-require'lspconfig'.jsonls.setup {}
-require'lspconfig'.pyright.setup{}
-require'lspconfig'.vimls.setup{}
-require'lspconfig'.yamlls.setup{}
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local lspconfig = require('lspconfig')
+lspconfig.bashls.setup{capabilities = capabilities}
+lspconfig.dockerls.setup{capabilities = capabilities}
+lspconfig.jsonls.setup {capabilities = capabilities}
+lspconfig.pyright.setup{capabilities = capabilities}
+lspconfig.vimls.setup{capabilities = capabilities}
+lspconfig.yamlls.setup{capabilities = capabilities}
 EOF
 
 if filereadable(expand('~/code/groovy-language-server/build/libs/groovy-language-server-all.jar'))
 lua << EOF
 groovyls_path = vim.api.nvim_call_function('expand', {'~/code/groovy-language-server/build/libs/groovy-language-server-all.jar'})
-require'lspconfig'.groovyls.setup{
+require('lspconfig').groovyls.setup{
     cmd = { "java", "-jar", groovyls_path},
 }
 EOF
@@ -325,39 +332,37 @@ endif
 let g:vim_markdown_conceal = 0
 let g:vim_markdown_conceal_code_blocks = 0
 
-" nvim-compe
+" nvim-cmp
 " ----------
 lua << EOF
-require'compe'.setup {
-  enabled = true;
-  autocomplete = true;
-  debug = false;
-  min_length = 1;
-  preselect = 'enable';
-  throttle_time = 80;
-  source_timeout = 200;
-  incomplete_delay = 400;
-  max_abbr_width = 100;
-  max_kind_width = 100;
-  max_menu_width = 100;
-  documentation = true;
-
-  source = {
-    buffer = true;
-    calc = true;
-    nvim_lsp = true;
-    nvim_lua = true;
-    path = true;
-    ultisnips = true;
-  };
-}
+local cmp = require('cmp')
+cmp.setup ({
+  snippet = {
+    expand = function(args)
+        vim.fn["UltiSnips#Anon"](args.body)
+    end,
+  },
+  mapping = {
+    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-e>'] = cmp.mapping.close(),
+    ['<CR>'] = cmp.mapping.confirm({ select = true  }),
+  },
+  sources = cmp.config.sources({
+    { name = 'nvim_lsp' },
+    { name = 'ultisnips' },
+    { name = 'path' },
+    { name = 'buffer' },
+  }),
+})
 EOF
 
-inoremap <silent><expr> <C-Space> compe#complete()
-inoremap <silent><expr> <CR>      compe#confirm('<CR>')
-inoremap <silent><expr> <C-e>     compe#close('<C-e>')
-inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
-inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
+inoremap <silent><expr> <C-Space> cmp#complete()
+inoremap <silent><expr> <CR>      cmp#confirm('<CR>')
+inoremap <silent><expr> <C-e>     cmp#close('<C-e>')
+inoremap <silent><expr> <C-f>     cmp#scroll({ 'delta': +4 })
+inoremap <silent><expr> <C-d>     cmp#scroll({ 'delta': -4 })
 
 " nvim-treesitter options
 " -----------------------
