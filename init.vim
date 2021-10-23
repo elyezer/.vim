@@ -337,6 +337,9 @@ let g:vim_markdown_conceal_code_blocks = 0
 lua << EOF
 local cmp = require('cmp')
 cmp.setup ({
+  completion = {
+    completeopt = 'menu,menuone,noinsert',
+  },
   experimental = {
     ghost_text = true,
   },
