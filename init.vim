@@ -337,6 +337,9 @@ let g:vim_markdown_conceal_code_blocks = 0
 lua << EOF
 local cmp = require('cmp')
 cmp.setup ({
+  experimental = {
+    ghost_text = true,
+  },
   snippet = {
     expand = function(args)
         vim.fn["UltiSnips#Anon"](args.body)
@@ -357,12 +360,6 @@ cmp.setup ({
   }),
 })
 EOF
-
-inoremap <silent><expr> <C-Space> cmp#complete()
-inoremap <silent><expr> <CR>      cmp#confirm('<CR>')
-inoremap <silent><expr> <C-e>     cmp#close('<C-e>')
-inoremap <silent><expr> <C-f>     cmp#scroll({ 'delta': +4 })
-inoremap <silent><expr> <C-d>     cmp#scroll({ 'delta': -4 })
 
 " nvim-treesitter options
 " -----------------------
