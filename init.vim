@@ -103,8 +103,7 @@ if has('autocmd')
     " Strip trailing whitespace on save
     autocmd! BufWritePre * :call Preserve("%s/\\s\\+$//e")
 
-    autocmd FileType css,html,htmldjango,json setlocal shiftwidth=2 tabstop=2 softtabstop=2
-    autocmd FileType javascript UltiSnipsAddFiletypes javascript.javascript-node.javascript-nightwatch.javascript-jsdoc
+    autocmd FileType css,html,gohtmltmpl,htmldjango,json setlocal shiftwidth=2 tabstop=2 softtabstop=2
 
     " Set spell on git commit messages
     autocmd FileType gitcommit setlocal spell
