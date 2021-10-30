@@ -80,9 +80,25 @@ endfunction
 " Map to strip trailing whitespace
 nmap _$ :call Preserve("%s/\\s\\+$//e")<CR>
 
+" Identify gohtmltmpl files
+func FTgohtmltmpl()
+  let n = 1
+  while n < 10 && n <= line("$")
+    if getline(n) =~ '{{-\?\s*\(partial\|template\|block\|define\|if\|with\)\>\|{{\/\*\s\+'
+      setfiletype gohtmltmpl
+      return
+    endif
+    let n = n + 1
+  endwhile
+  setfiletype FALLBACK html
+endfunc
+
 if has('autocmd')
     "Auto source .vimrc file when save it
     autocmd! BufWritePost init.vim source $MYVIMRC
+
+    " Identify gohtmltmpl files
+    autocmd! BufNewFile,BufRead *.html call FTgohtmltmpl()
 
     " Strip trailing whitespace on save
     autocmd! BufWritePre * :call Preserve("%s/\\s\\+$//e")
