@@ -105,11 +105,8 @@ if has('autocmd')
 
     autocmd FileType css,html,gohtmltmpl,htmldjango,json setlocal shiftwidth=2 tabstop=2 softtabstop=2
 
-    " Set spell on git commit messages
-    autocmd FileType gitcommit setlocal spell
-
-    " Better editing options for reStructuredText files
-    autocmd FileType rst setlocal spell
+    " Set spell for some file types
+    autocmd FileType gitcommit,md,rst setlocal spell
 endif
 
 " Fast edit .vimrc file
