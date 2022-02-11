@@ -16,7 +16,7 @@ endif
 call plug#begin(s:plugged_path)
 
 " Bundles to install
-Plug 'SirVer/ultisnips'
+Plug 'L3MON4D3/LuaSnip'
 Plug 'Yggdroot/indentLine'
 Plug 'airblade/vim-gitgutter'
 Plug 'cohama/lexima.vim'
@@ -37,8 +37,8 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'quangnguyen30192/cmp-nvim-ultisnips'
 Plug 'hrsh7th/nvim-cmp'
+Plug 'saadparwaiz1/cmp_luasnip'
 
 
 Plug 'nvim-lua/popup.nvim'
@@ -344,6 +344,14 @@ endif
 let g:vim_markdown_conceal = 0
 let g:vim_markdown_conceal_code_blocks = 0
 
+" LuaSnip
+" -------
+lua << EOF
+local ls = require('luasnip')
+ls.filetype_extend("all", { "_" })
+require('luasnip.loaders.from_snipmate').lazy_load()
+EOF
+
 " nvim-cmp
 " ----------
 lua << EOF
@@ -357,7 +365,7 @@ cmp.setup ({
   },
   snippet = {
     expand = function(args)
-        vim.fn["UltiSnips#Anon"](args.body)
+      require'luasnip'.lsp_expand(args.body)
     end,
   },
   mapping = {
@@ -369,7 +377,7 @@ cmp.setup ({
   },
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
-    { name = 'ultisnips' },
+    { name = 'luasnip' },
     { name = 'path' },
     {
         name = 'buffer',
