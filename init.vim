@@ -371,7 +371,10 @@ cmp.setup ({
     { name = 'nvim_lsp' },
     { name = 'ultisnips' },
     { name = 'path' },
-    { name = 'buffer' },
+    {
+        name = 'buffer',
+        keyword_length = 3,
+    },
   }),
 })
 EOF
