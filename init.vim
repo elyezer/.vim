@@ -352,6 +352,14 @@ ls.filetype_extend("all", { "_" })
 require('luasnip.loaders.from_snipmate').lazy_load()
 EOF
 
+imap <silent><expr> <C-j> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<C-j>'
+inoremap <silent> <C-k> <cmd>lua require'luasnip'.jump(-1)<Cr>
+snoremap <silent> <C-j> <cmd>lua require('luasnip').jump(1)<Cr>
+snoremap <silent> <C-k> <cmd>lua require('luasnip').jump(-1)<Cr>
+
+imap <silent><expr> <C-l> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-l>'
+smap <silent><expr> <C-l> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-l>'
+
 " nvim-cmp
 " ----------
 lua << EOF
