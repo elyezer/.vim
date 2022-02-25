@@ -169,28 +169,6 @@ nnoremap tn :TestNearest<cr>
 nnoremap ts :TestSuite<cr>
 nnoremap tv :TestVisit<cr>
 
-" lspconfig
-" ---------
-lua << EOF
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-local lspconfig = require('lspconfig')
-lspconfig.bashls.setup{capabilities = capabilities}
-lspconfig.dockerls.setup{capabilities = capabilities}
-lspconfig.jsonls.setup {capabilities = capabilities}
-lspconfig.pyright.setup{capabilities = capabilities}
-lspconfig.vimls.setup{capabilities = capabilities}
-lspconfig.yamlls.setup{capabilities = capabilities}
-EOF
-
-if filereadable(expand('~/code/groovy-language-server/build/libs/groovy-language-server-all.jar'))
-lua << EOF
-groovyls_path = vim.api.nvim_call_function('expand', {'~/code/groovy-language-server/build/libs/groovy-language-server-all.jar'})
-require('lspconfig').groovyls.setup{
-    cmd = { "java", "-jar", groovyls_path},
-}
-EOF
-endif
-
 " vim-markdown options
 " --------------------
 let g:vim_markdown_conceal = 0
@@ -198,12 +176,6 @@ let g:vim_markdown_conceal_code_blocks = 0
 
 " LuaSnip
 " -------
-lua << EOF
-local ls = require('luasnip')
-ls.filetype_extend("all", { "_" })
-require('luasnip.loaders.from_snipmate').lazy_load()
-EOF
-
 imap <silent><expr> <C-j> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<C-j>'
 inoremap <silent> <C-k> <cmd>lua require'luasnip'.jump(-1)<Cr>
 snoremap <silent> <C-j> <cmd>lua require('luasnip').jump(1)<Cr>
@@ -211,65 +183,3 @@ snoremap <silent> <C-k> <cmd>lua require('luasnip').jump(-1)<Cr>
 
 imap <silent><expr> <C-l> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-l>'
 smap <silent><expr> <C-l> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-l>'
-
-" nvim-cmp
-" ----------
-lua << EOF
-local cmp = require('cmp')
-cmp.setup ({
-  completion = {
-    completeopt = 'menu,menuone,noinsert',
-  },
-  experimental = {
-    ghost_text = true,
-  },
-  snippet = {
-    expand = function(args)
-      require'luasnip'.lsp_expand(args.body)
-    end,
-  },
-  mapping = {
-    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmp.mapping.complete(),
-    ['<C-e>'] = cmp.mapping.close(),
-    ['<CR>'] = cmp.mapping.confirm({ select = true  }),
-  },
-  sources = cmp.config.sources({
-    { name = 'nvim_lsp' },
-    { name = 'luasnip' },
-    { name = 'path' },
-    {
-        name = 'buffer',
-        keyword_length = 3,
-    },
-  }),
-})
-EOF
-
-" nvim-treesitter options
-" -----------------------
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = { "bash", "python", "toml", "yaml" },
-  highlight = {
-    enable = true,
-    additional_vim_regex_highlighting = false,
-  },
-  textobjects = {
-    select = {
-      enable = true,
-      lookahead = true,
-      keymaps = {
-        ["af"] = "@function.outer",
-        ["if"] = "@function.inner",
-        ["ac"] = "@class.outer",
-        ["ic"] = "@class.inner",
-        ["aa"] = "@parameter.outer",
-        ["ia"] = "@parameter.inner",
-
-      },
-    },
-  },
-}
-EOF
