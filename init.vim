@@ -69,81 +69,11 @@ silent! colorscheme gruvbox
 highlight! link TermCursor Cursor
 highlight! TermCursorNC guibg=red guifg=white ctermbg=1 ctermfg=15
 
-" Automatically load a file changed outside
-set autoread
-
-" Enable autoindent
-set autoindent
-
-" Backspace configuration
-set backspace=eol,start,indent
-
-" Highlight current line
-set cursorline
-
-" Always use utf-8
-set encoding=utf-8
-
-" Show line numbers
-set number
-
-" Show relative line numbers
-set relativenumber
-
-" Enable mouse support in terminal
-set mouse=a
-
-" Always show cursor postion
-set ruler
-
-" Hide the buffer when abandoned
-set hidden
-
-" Keep some lines visible when scrolling
-set scrolloff=3
-
-" Maximum width of text that is being inserted
-set textwidth=79
-
-" Show the filename in the window titlebar
-set title
-
-" No sounds
-set visualbell
-
-" Tab stuff
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set expandtab
-set shiftround
-set smarttab
-
-" Invisibles
-set list "Show invisibles
-set listchars=tab:▸\ ,trail:·,eol:¬ "Change tab, trail and eol characters
-
-" Search
-set ignorecase
-set incsearch
-set smartcase
-set gdefault " Add g flag by default
-
-" Wildcard command-line completion
-set wildmenu " Show completions above the command-line
-set wildmode=list:longest " Complete only until point of ambiguity.
-
 " Smart way to move between windows
 map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
-
-" Open splits at bottom
-set splitbelow
-
-" Open vertical splits at right
-set splitright
 
 " Smart way to move between buffers
 map <M-D-Right> :tabnext<cr>
@@ -151,33 +81,12 @@ imap <M-D-Right> <esc>:tabnext<cr>a
 map <M-D-Left> :tabprevious<cr>
 imap <M-D-Left> <esc>:tabprevious<cr>a
 
-" Always show status line
-set laststatus=2
-
-" Set completeopt
-set completeopt=menu,menuone,noselect
-
 " Map omnicomplete shortcut
 inoremap <C-Space> <C-x><C-o>
 
 " Create backup directory if not exists
 if exists("*mkdir") && empty(glob('~/.tmp'))
     call mkdir($HOME . '/.tmp')
-endif
-
-" Change backup directory
-set backupdir=~/.tmp
-
-" Change the directory of swp files
-set directory=~/.tmp
-
-" Faster and improved grep using either rg or ag (The Silver Searcher)
-if executable('rg')
-    set grepprg=rg\ --vimgrep\ $*
-    set grepformat=%f:%l:%c:%m
-elseif executable('ag')
-    set grepprg=ag\ --vimgrep\ $*
-    set grepformat=%f:%l:%c:%m
 endif
 
 " Mappings
@@ -191,12 +100,6 @@ if executable('uuidgen')
 else
     nnoremap <leader>id :execute 'normal! o' . ':id: ' . system('python3 -c "import uuid; print(str(uuid.uuid4()))"')<esc>ddk==
 endif
-
-" Plug options
-" ------------
-
-" Command to open plug window
-let g:plug_window='botright new'
 
 " Python syntax options
 " ---------------------
