@@ -1,58 +1,7 @@
-let s:plug_path = '~/.local/share/nvim/site/autoload/plug.vim'
-let s:plugged_path = '~/.local/share/nvim/plugged'
 let g:python_host_prog = '/usr/bin/python3'
 let g:python3_host_prog = '/usr/bin/python3'
 
-if !filereadable(expand(s:plug_path))
-    echo 'Installing vim-plug...'
-    echo ''
-    execute "silent !curl -fLo " . s:plug_path . " --create-dirs "
-        \ "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
-
-    " Install plugins after loading vim
-    autocmd VimEnter * PlugInstall
-endif
-
-call plug#begin(s:plugged_path)
-
-" Bundles to install
-Plug 'L3MON4D3/LuaSnip'
-Plug 'Yggdroot/indentLine'
-Plug 'airblade/vim-gitgutter'
-Plug 'cohama/lexima.vim'
-Plug 'honza/vim-snippets'
-Plug 'itchyny/lightline.vim'
-Plug 'janko-m/vim-test'
-Plug 'jmcantrell/vim-virtualenv'
-Plug 'pearofducks/ansible-vim', { 'do': './UltiSnips/generate.py' }
-Plug 'sheerun/vim-polyglot'
-Plug 'tpope/vim-abolish'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-unimpaired'
-
-Plug 'neovim/nvim-lspconfig'
-Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/cmp-path'
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'hrsh7th/nvim-cmp'
-Plug 'saadparwaiz1/cmp_luasnip'
-
-
-Plug 'nvim-lua/popup.nvim'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
-
-Plug 'nvim-treesitter/nvim-treesitter'
-Plug 'nvim-treesitter/nvim-treesitter-textobjects'
-
-" Colorschemes
-Plug 'gruvbox-community/gruvbox'
-
-
-call plug#end()
+lua require('plugins')
 
 " GUI Options
 if has('gui_running')

@@ -1,4 +1,1 @@
-.netrwhist
-autoload/plug.vim*
-plugged
-spell
+plugin/packer_compiled.lua
