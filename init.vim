@@ -3,16 +3,6 @@ let g:python3_host_prog = '/usr/bin/python3'
 
 lua require('plugins')
 
-" GUI Options
-if has('gui_running')
-    if has('gui_gtk3')
-        set guifont=Source\ Code\ Pro\ for\ Powerline\ 13
-    endif
-    set guioptions-=T "Disable toolbar
-    set guioptions-=m "Disable menu bar
-    set shell=/bin/bash
-endif
-
 " Strip trailing whitespace
 function! Preserve(command)
     " Preparation: save last search, and cursor position.
