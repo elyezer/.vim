@@ -8,7 +8,7 @@ opt.autoread = true
 opt.autoindent = true
 
 -- Backspace configuration
-opt.backspace = 'eol,start,indent'
+opt.backspace = {'eol', 'start', 'indent'}
 
 -- Highlight current line
 opt.cursorline = true
@@ -75,7 +75,7 @@ opt.splitright = true
 opt.laststatus = 2
 
 -- opt.completeopt
-opt.completeopt = 'menu,menuone,noselect'
+opt.completeopt = {'menu', 'menuone', 'noselect'}
 
 -- Change backup directory
 opt.backupdir = '~/.tmp'
