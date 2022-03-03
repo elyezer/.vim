@@ -78,10 +78,10 @@ opt.laststatus = 2
 opt.completeopt = {'menu', 'menuone', 'noselect'}
 
 -- Change backup directory
-opt.backupdir = '~/.tmp'
+opt.backupdir = fn.expand('~/.tmp')
 
 -- Change the directory of swp files
-opt.directory = '~/.tmp'
+opt.directory = fn.expand('~/.tmp')
 
 -- Faster and improved grep using either rg or ag (The Silver Searcher)
 if fn.executable('rg') then
