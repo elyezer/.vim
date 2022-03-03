@@ -48,8 +48,10 @@ if has('autocmd')
     autocmd FileType gitcommit,md,rst setlocal spell
 endif
 
-" Fast edit .vimrc file
+" Fast edit init.vim, plugins and options files
 nmap <leader>e :e! $MYVIMRC<cr>
+nmap <leader>p :execute "edit! " . stdpath("config") . "/lua/plugins.lua"<cr>
+nmap <leader>o :execute "edit! " . stdpath("config") . "/plugin/options.lua"<cr>
 
 " Define the colorscheme for syntax highlight
 syntax enable
