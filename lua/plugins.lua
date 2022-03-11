@@ -26,11 +26,17 @@ return require('packer').startup(function(use)
   use 'jmcantrell/vim-virtualenv'
   use 'sheerun/vim-polyglot'
   use 'tpope/vim-abolish'
-  use 'tpope/vim-commentary'
   use 'tpope/vim-fugitive'
   use 'tpope/vim-repeat'
   use 'tpope/vim-surround'
   use 'tpope/vim-unimpaired'
+
+  use {
+    'numToStr/Comment.nvim',
+    config = function()
+      require('Comment').setup()
+    end
+  }
 
   use {
     'neovim/nvim-lspconfig',
