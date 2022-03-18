@@ -71,8 +71,8 @@ opt.splitbelow = true
 -- Open vertical splits at right
 opt.splitright = true
 
--- Always show status line
-opt.laststatus = 2
+-- Show global status line
+opt.laststatus = 3
 
 -- opt.completeopt
 opt.completeopt = {'menu', 'menuone', 'noselect'}
