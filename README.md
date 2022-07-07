@@ -15,8 +15,7 @@ $ git clone git@github.com:elyezer/.vim.git
 Next, run the following:
 
 ```console
-$ mkdir -p ~/.config/nvim
-$ ln -s ~/.vim/init.vim ~/.config/nvim/init.vim
+$ ln -s ~/.vim ~/.config/nvim
 $ nvim
 ```
 
