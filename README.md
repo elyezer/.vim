@@ -9,7 +9,7 @@ Installation
 First clone the repo inside your home directory:
 
 ```console
-$ git clone git@github.com:elyezer/.vim.git
+$ git clone git@github.com:elyezer/.vim.git ~/.vim
 ```
 
 Next, run the following:
