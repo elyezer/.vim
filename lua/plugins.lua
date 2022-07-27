@@ -18,7 +18,7 @@ return require('packer').startup(function(use)
       require('luasnip.loaders.from_snipmate').lazy_load()
     end
   }
-  use 'Yggdroot/indentLine'
+  use 'lukas-reineke/indent-blankline.nvim'
   use 'airblade/vim-gitgutter'
   use 'cohama/lexima.vim'
   use 'itchyny/lightline.vim'

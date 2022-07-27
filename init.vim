@@ -115,11 +115,6 @@ let g:lightline = {
       \ },
       \ }
 
-" Ident line options
-" ------------------
-
-let g:indentLine_char = '│'
-
 if exists('g:solarized_termcolors')
     if &background == "dark"
         if g:solarized_termcolors == 256
