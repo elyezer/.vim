@@ -1,20 +1,8 @@
 local opt = vim.opt
 local fn = vim.fn
 
--- Automatically load a file changed outside
-opt.autoread = true
-
--- Enable autoindent
-opt.autoindent = true
-
--- Backspace configuration
-opt.backspace = {'eol', 'start', 'indent'}
-
 -- Highlight current line
 opt.cursorline = true
-
--- Always use utf-8
-opt.encoding = 'utf-8'
 
 -- Show line numbers
 opt.number = true
@@ -25,12 +13,6 @@ opt.relativenumber = true
 -- Enable mouse support in terminal
 opt.mouse = a
 
--- Always show cursor postion
-opt.ruler = true
-
--- Hide the buffer when abandoned
-opt.hidden = true
-
 -- Keep some lines visible when scrolling
 opt.scrolloff = 3
 
@@ -40,16 +22,12 @@ opt.textwidth = 79
 -- Show the filename in the window titlebar
 opt.title = true
 
--- No sounds
-opt.visualbell = true
-
 -- Tab stuff
 opt.tabstop = 4
 opt.softtabstop = 4
 opt.shiftwidth = 4
 opt.expandtab = true
 opt.shiftround = true
-opt.smarttab = true
 
 -- Invisibles
 opt.list = true -- Show invisibles
@@ -57,12 +35,10 @@ opt.listchars = {tab = '▸ ', trail = '·', eol = '¬'} -- Change tab, trail an
 
 -- Search
 opt.ignorecase = true
-opt.incsearch = true
 opt.smartcase = true
 opt.gdefault = true -- Add g flag by default
 
 -- Wildcard command-line completion
-opt.wildmenu = true -- Show completions above the command-line
 opt.wildmode = 'list:longest' -- Complete only until point of ambiguity.
 
 -- Open splits at bottom
@@ -76,12 +52,6 @@ opt.laststatus = 3
 
 -- opt.completeopt
 opt.completeopt = {'menu', 'menuone', 'noselect'}
-
--- Change backup directory
-opt.backupdir = fn.expand('~/.tmp')
-
--- Change the directory of swp files
-opt.directory = fn.expand('~/.tmp')
 
 -- Faster and improved grep using either rg or ag (The Silver Searcher)
 if fn.executable('rg') then
