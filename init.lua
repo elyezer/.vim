@@ -4,19 +4,6 @@ require('elyezer.plugins')
 vim.cmd('colorscheme gruvbox')
 
 vim.cmd([[
-" Strip trailing whitespace
-function! Preserve(command)
-    " Preparation: save last search, and cursor position.
-    let _s=@/
-    let l = line(".")
-    let c = col(".")
-    " Do the business:
-    execute a:command
-    " Clean up: restore previous search history, and cursor position
-    let @/=_s
-    call cursor(l, c)
-endfunction
-
 " Identify gohtmltmpl files
 function! FTgohtmltmpl()
   let n = 1
@@ -64,7 +51,15 @@ vim.api.nvim_create_autocmd("BufWritePost", { pattern = "init.lua", command = "s
 vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, { pattern = "*.html", command = "call FTgohtmltmpl()", group = augroup })
 
 -- Strip trailing whitespace on save
-vim.api.nvim_create_autocmd("BufWritePre", { pattern = "*", command = ':call Preserve("%s/\\s\\+$//e")', group = augroup })
+vim.api.nvim_create_autocmd("BufWritePre", {
+    pattern = "*",
+    group = augroup,
+    callback = function ()
+        local view = vim.fn.winsaveview()
+        vim.cmd("keepjumps keeppatterns silent! %s/\\s\\+$//e")
+        vim.fn.winrestview(view)
+    end
+})
 
 vim.api.nvim_create_autocmd("FileType", { pattern = { "css", "html", "gohtmltmpl", "htmldjango", "json" }, command = "setlocal shiftwidth=2 tabstop=2 softtabstop=2", group = augroup })
 
