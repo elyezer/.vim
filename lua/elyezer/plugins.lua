@@ -21,7 +21,15 @@ return require('packer').startup(function(use)
   use 'lukas-reineke/indent-blankline.nvim'
   use 'airblade/vim-gitgutter'
   use 'cohama/lexima.vim'
-  use 'itchyny/lightline.vim'
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = { 'kyazdani42/nvim-web-devicons', opt = true  },
+    config = function()
+      require('lualine').setup({
+        options = { section_separators = '', component_separators = ''  }
+      })
+    end
+  }
   use 'janko-m/vim-test'
   use 'jmcantrell/vim-virtualenv'
   use 'sheerun/vim-polyglot'
