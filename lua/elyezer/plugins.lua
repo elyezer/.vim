@@ -57,6 +57,29 @@ return require('packer').startup(function(use)
       lspconfig.pyright.setup{capabilities = capabilities}
       lspconfig.vimls.setup{capabilities = capabilities}
       lspconfig.yamlls.setup{capabilities = capabilities}
+      lspconfig.sumneko_lua.setup {
+        capabilities = capabilities,
+        settings = {
+          Lua = {
+            runtime = {
+              -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+              version = 'LuaJIT',
+            },
+            diagnostics = {
+              -- Get the language server to recognize the `vim` global
+              globals = {'vim'},
+            },
+            workspace = {
+              -- Make the server aware of Neovim runtime files
+              library = vim.api.nvim_get_runtime_file("", true),
+            },
+            -- Do not send telemetry data containing a randomized but unique identifier
+            telemetry = {
+              enable = false,
+            },
+          },
+        },
+      }
     end
   }
   use {
@@ -112,7 +135,7 @@ return require('packer').startup(function(use)
     run = ':TSUpdate',
     config = function()
       require'nvim-treesitter.configs'.setup {
-        ensure_installed = { "bash", "python", "toml", "yaml" },
+        ensure_installed = { "bash", "lua", "python", "toml", "yaml" },
         highlight = {
           enable = true,
           additional_vim_regex_highlighting = false,
