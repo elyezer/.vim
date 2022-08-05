@@ -59,11 +59,15 @@ return require('packer').startup(function(use)
       lspconfig.yamlls.setup{capabilities = capabilities}
     end
   }
-  use 'hrsh7th/cmp-buffer'
-  use 'hrsh7th/cmp-path'
-  use 'hrsh7th/cmp-nvim-lsp'
   use {
     'hrsh7th/nvim-cmp',
+    requires = {
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-nvim-lua',
+      'hrsh7th/cmp-path',
+      'saadparwaiz1/cmp_luasnip',
+    },
     config = function()
       local cmp = require('cmp')
       cmp.setup ({
@@ -97,7 +101,6 @@ return require('packer').startup(function(use)
         })
     end
   }
-  use 'saadparwaiz1/cmp_luasnip'
 
   use 'nvim-lua/popup.nvim'
   use 'nvim-lua/plenary.nvim'
