@@ -96,9 +96,6 @@ return require('packer').startup(function(use)
       local cmp = require('cmp')
       local lspkind = require('lspkind')
       cmp.setup ({
-          completion = {
-            completeopt = 'menu,menuone,noinsert',
-          },
           experimental = {
             ghost_text = true,
           },
