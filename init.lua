@@ -22,14 +22,14 @@ highlight! TermCursorNC guibg=red guifg=white ctermbg=1 ctermfg=15
 ]])
 
 local function bind(op, outer_opts)
-    outer_opts = outer_opts or {noremap = true}
-    return function(lhs, rhs, opts)
-        opts = vim.tbl_extend("force",
-            outer_opts,
-            opts or {}
-        )
-        vim.keymap.set(op, lhs, rhs, opts)
-    end
+  outer_opts = outer_opts or {noremap = true}
+  return function(lhs, rhs, opts)
+    opts = vim.tbl_extend("force",
+      outer_opts,
+      opts or {}
+      )
+    vim.keymap.set(op, lhs, rhs, opts)
+  end
 end
 
 local nmap = bind("n", {noremap = false})
@@ -52,13 +52,13 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, { pattern = "*.html", c
 
 -- Strip trailing whitespace on save
 vim.api.nvim_create_autocmd("BufWritePre", {
-    pattern = "*",
-    group = augroup,
-    callback = function ()
-        local view = vim.fn.winsaveview()
-        vim.cmd("keepjumps keeppatterns silent! %s/\\s\\+$//e")
-        vim.fn.winrestview(view)
-    end
+  pattern = "*",
+  group = augroup,
+  callback = function ()
+    local view = vim.fn.winsaveview()
+    vim.cmd("keepjumps keeppatterns silent! %s/\\s\\+$//e")
+    vim.fn.winrestview(view)
+  end
 })
 
 vim.api.nvim_create_autocmd("FileType", { pattern = { "css", "html", "gohtmltmpl", "htmldjango", "json" }, command = "setlocal shiftwidth=2 tabstop=2 softtabstop=2", group = augroup })
@@ -96,9 +96,9 @@ tnoremap("<esc>", "<c-\\><c-n>")
 tnoremap("<C-v><esc>", "<esc>")
 
 if vim.fn.executable('uuidgen') then
-    nnoremap("<leader>id", ":execute 'normal! o' . ':id: ' . system('uuidgen')<esc>ddk==")
+  nnoremap("<leader>id", ":execute 'normal! o' . ':id: ' . system('uuidgen')<esc>ddk==")
 else
-    nnoremap("<leader>id", ":execute 'normal! o' . ':id: ' . system('python3 -c \"import uuid; print(str(uuid.uuid4()))\"')<esc>ddk==")
+  nnoremap("<leader>id", ":execute 'normal! o' . ':id: ' . system('python3 -c \"import uuid; print(str(uuid.uuid4()))\"')<esc>ddk==")
 end
 
 -- Fuzzy finder options
@@ -140,6 +140,6 @@ vim.g.python_highlight_all = 1
 
 -- Prefer pytest whenever it is available
 if vim.fn.executable('pytest') or vim.fn.executable('py.test') then
-    vim.g["test#python#runner"] = "pytest"
-    vim.g["test#python#pytest#options"] = "-v"
+  vim.g["test#python#runner"] = "pytest"
+  vim.g["test#python#pytest#options"] = "-v"
 end

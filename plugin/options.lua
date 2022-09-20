@@ -55,9 +55,9 @@ opt.completeopt = {'menu', 'menuone', 'noselect'}
 
 -- Faster and improved grep using either rg or ag (The Silver Searcher)
 if fn.executable('rg') then
-    opt.grepprg = 'rg --vimgrep $*'
-    opt.grepformat = '%f:%l:%c:%m'
+  opt.grepprg = 'rg --vimgrep $*'
+  opt.grepformat = '%f:%l:%c:%m'
 elseif fn.executable('ag') then
-    opt.grepprg = 'ag --vimgrep $*'
-    opt.grepformat = '%f:%l:%c:%m'
+  opt.grepprg = 'ag --vimgrep $*'
+  opt.grepformat = '%f:%l:%c:%m'
 end
