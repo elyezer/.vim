@@ -90,15 +90,20 @@ return require('packer').startup(function(use)
       'hrsh7th/cmp-nvim-lua',
       'hrsh7th/cmp-path',
       'saadparwaiz1/cmp_luasnip',
+      'onsails/lspkind.nvim',
     },
     config = function()
       local cmp = require('cmp')
+      local lspkind = require('lspkind')
       cmp.setup ({
           completion = {
             completeopt = 'menu,menuone,noinsert',
           },
           experimental = {
             ghost_text = true,
+          },
+          formatting = {
+            format = lspkind.cmp_format(),
           },
           snippet = {
             expand = function(args)
