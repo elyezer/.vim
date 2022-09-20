@@ -113,6 +113,16 @@ return require('packer').startup(function(use)
             ['<C-Space>'] = cmp.mapping.complete(),
             ['<C-e>'] = cmp.mapping.close(),
             ['<CR>'] = cmp.mapping.confirm({ select = true  }),
+            ['<Up>'] = cmp.mapping(function()
+              if cmp.visible() then
+                cmp.select_prev_item()
+              end
+            end),
+            ['<Down>'] = cmp.mapping(function()
+              if cmp.visible() then
+                cmp.select_next_item()
+              end
+            end),
           },
           sources = cmp.config.sources({
               { name = 'nvim_lsp' },
