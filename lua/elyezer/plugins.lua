@@ -12,11 +12,6 @@ return require('packer').startup(function(use)
   use {
     'L3MON4D3/LuaSnip',
     requires = 'honza/vim-snippets',
-    config = function()
-      local ls = require('luasnip')
-      ls.filetype_extend("all", { "_" })
-      require('luasnip.loaders.from_snipmate').lazy_load()
-    end
   }
   use 'lukas-reineke/indent-blankline.nvim'
   use 'airblade/vim-gitgutter'
@@ -24,11 +19,6 @@ return require('packer').startup(function(use)
   use {
     'nvim-lualine/lualine.nvim',
     requires = { 'kyazdani42/nvim-web-devicons', opt = true  },
-    config = function()
-      require('lualine').setup({
-        options = { section_separators = '', component_separators = ''  }
-      })
-    end
   }
   use 'janko-m/vim-test'
   use 'jmcantrell/vim-virtualenv'
@@ -38,50 +28,9 @@ return require('packer').startup(function(use)
   use 'tpope/vim-repeat'
   use 'tpope/vim-surround'
   use 'tpope/vim-unimpaired'
+  use 'numToStr/Comment.nvim'
+  use 'neovim/nvim-lspconfig'
 
-  use {
-    'numToStr/Comment.nvim',
-    config = function()
-      require('Comment').setup()
-    end
-  }
-
-  use {
-    'neovim/nvim-lspconfig',
-    config = function()
-      local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-      local lspconfig = require('lspconfig')
-      lspconfig.bashls.setup{capabilities = capabilities}
-      lspconfig.dockerls.setup{capabilities = capabilities}
-      lspconfig.jsonls.setup {capabilities = capabilities}
-      lspconfig.pyright.setup{capabilities = capabilities}
-      lspconfig.vimls.setup{capabilities = capabilities}
-      lspconfig.yamlls.setup{capabilities = capabilities}
-      lspconfig.sumneko_lua.setup {
-        capabilities = capabilities,
-        settings = {
-          Lua = {
-            runtime = {
-              -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-              version = 'LuaJIT',
-            },
-            diagnostics = {
-              -- Get the language server to recognize the `vim` global
-              globals = {'vim'},
-            },
-            workspace = {
-              -- Make the server aware of Neovim runtime files
-              library = vim.api.nvim_get_runtime_file("", true),
-            },
-            -- Do not send telemetry data containing a randomized but unique identifier
-            telemetry = {
-              enable = false,
-            },
-          },
-        },
-      }
-    end
-  }
   use {
     'hrsh7th/nvim-cmp',
     requires = {
@@ -92,49 +41,6 @@ return require('packer').startup(function(use)
       'saadparwaiz1/cmp_luasnip',
       'onsails/lspkind.nvim',
     },
-    config = function()
-      local cmp = require('cmp')
-      local lspkind = require('lspkind')
-      cmp.setup ({
-          experimental = {
-            ghost_text = true,
-          },
-          formatting = {
-            format = lspkind.cmp_format(),
-          },
-          snippet = {
-            expand = function(args)
-              require'luasnip'.lsp_expand(args.body)
-            end,
-          },
-          mapping = {
-            ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-            ['<C-f>'] = cmp.mapping.scroll_docs(4),
-            ['<C-Space>'] = cmp.mapping.complete(),
-            ['<C-e>'] = cmp.mapping.close(),
-            ['<CR>'] = cmp.mapping.confirm({ select = true  }),
-            ['<Up>'] = cmp.mapping(function()
-              if cmp.visible() then
-                cmp.select_prev_item()
-              end
-            end),
-            ['<Down>'] = cmp.mapping(function()
-              if cmp.visible() then
-                cmp.select_next_item()
-              end
-            end),
-          },
-          sources = cmp.config.sources({
-              { name = 'nvim_lsp' },
-              { name = 'luasnip' },
-              { name = 'path' },
-              {
-                name = 'buffer',
-                keyword_length = 3,
-              },
-            }),
-        })
-    end
   }
 
   use 'nvim-lua/popup.nvim'
@@ -145,29 +51,6 @@ return require('packer').startup(function(use)
     'nvim-treesitter/nvim-treesitter',
     requires = 'nvim-treesitter/nvim-treesitter-textobjects',
     run = ':TSUpdate',
-    config = function()
-      require'nvim-treesitter.configs'.setup {
-        ensure_installed = { "bash", "lua", "python", "toml", "yaml" },
-        highlight = {
-          enable = true,
-          additional_vim_regex_highlighting = false,
-        },
-        textobjects = {
-          select = {
-            enable = true,
-            lookahead = true,
-            keymaps = {
-              ["af"] = "@function.outer",
-              ["if"] = "@function.inner",
-              ["ac"] = "@class.outer",
-              ["ic"] = "@class.inner",
-              ["aa"] = "@parameter.outer",
-              ["ia"] = "@parameter.inner",
-            },
-          },
-        },
-      }
-    end
   }
 
   -- Colorschemes
