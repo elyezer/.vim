@@ -45,10 +45,18 @@ local tnoremap = bind("t")
 local augroup = vim.api.nvim_create_augroup("elyezer", { clear = true })
 
 -- Auto source .vimrc file when save it
-vim.api.nvim_create_autocmd("BufWritePost", { pattern = "init.lua", command = "source $MYVIMRC", group = augroup })
+vim.api.nvim_create_autocmd("BufWritePost", {
+  pattern = "init.lua",
+  command = "source $MYVIMRC",
+  group = augroup,
+})
 
 -- Identify gohtmltmpl files
-vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, { pattern = "*.html", command = "call FTgohtmltmpl()", group = augroup })
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+  pattern = "*.html",
+  command = "call FTgohtmltmpl()",
+  group = augroup,
+})
 
 -- Strip trailing whitespace on save
 vim.api.nvim_create_autocmd("BufWritePre", {
@@ -61,10 +69,18 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   end
 })
 
-vim.api.nvim_create_autocmd("FileType", { pattern = { "css", "html", "gohtmltmpl", "htmldjango", "json" }, command = "setlocal shiftwidth=2 tabstop=2 softtabstop=2", group = augroup })
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "css", "html", "gohtmltmpl", "htmldjango", "json" },
+  command = "setlocal shiftwidth=2 tabstop=2 softtabstop=2",
+  group = augroup,
+})
 
 -- Set spell for some file types
-vim.api.nvim_create_autocmd("FileType", { pattern = { "gitcommit", "md", "rst" }, command = "setlocal spell", group = augroup })
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "gitcommit", "md", "rst" },
+  command = "setlocal spell",
+  group = augroup,
+})
 
 -- Fast edit init.vim, plugins and options files
 nmap("<leader>e", ":e! $MYVIMRC<cr>")
