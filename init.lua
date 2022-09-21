@@ -93,18 +93,6 @@ nmap("<C-k>", "<C-W>k")
 nmap("<C-h>", "<C-W>h")
 nmap("<C-l>", "<C-W>l")
 
--- Smart way to move between buffers
-nmap("<M-D-Right>", ":tabnext<cr>")
-imap("<M-D-Right>", "<esc>:tabnext<cr>a")
-nmap("<M-D-Left>", ":tabprevious<cr>")
-imap("<M-D-Left>", "<esc>:tabprevious<cr>a")
-
--- Map omnicomplete shortcut
-inoremap("<C-Space>", "<C-x><C-o>")
-
--- Create backup directory if not exists
-vim.fn.mkdir(vim.fn.glob("$HOME/.tmp"), "p")
-
 -- Mappings
 -- --------
 
