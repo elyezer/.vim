@@ -3,6 +3,9 @@ local lspconfig = require('lspconfig')
 
 lspconfig.bashls.setup{capabilities = capabilities}
 lspconfig.dockerls.setup{capabilities = capabilities}
+if vim.fn.executable('gopls') then
+  lspconfig.gopls.setup{capabilities = capabilities}
+end
 lspconfig.jsonls.setup {capabilities = capabilities}
 lspconfig.pyright.setup{capabilities = capabilities}
 lspconfig.vimls.setup{capabilities = capabilities}
