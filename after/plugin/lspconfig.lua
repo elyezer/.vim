@@ -6,8 +6,8 @@ lspconfig.dockerls.setup{capabilities = capabilities}
 if vim.fn.executable('gopls') then
   lspconfig.gopls.setup{capabilities = capabilities}
 end
-if vim.fn.executable('ruff-lsp') then
-  lspconfig.ruff_lsp.setup{capabilities = capabilities}
+if vim.fn.executable('ruff') then
+  lspconfig.ruff.setup{capabilities = capabilities}
 end
 lspconfig.jsonls.setup {capabilities = capabilities}
 lspconfig.pyright.setup{capabilities = capabilities}
