@@ -1,19 +1,12 @@
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
-local lspconfig = require('lspconfig')
 
-lspconfig.bashls.setup{capabilities = capabilities}
-lspconfig.dockerls.setup{capabilities = capabilities}
-if vim.fn.executable('gopls') then
-  lspconfig.gopls.setup{capabilities = capabilities}
-end
-if vim.fn.executable('ruff') then
-  lspconfig.ruff.setup{capabilities = capabilities}
-end
-lspconfig.jsonls.setup {capabilities = capabilities}
-lspconfig.pyright.setup{capabilities = capabilities}
-lspconfig.vimls.setup{capabilities = capabilities}
-lspconfig.yamlls.setup{capabilities = capabilities}
-lspconfig.lua_ls.setup {
+vim.lsp.config('bashls', { capabilities = capabilities })
+vim.lsp.config('dockerls', { capabilities = capabilities })
+vim.lsp.config('jsonls', { capabilities = capabilities })
+vim.lsp.config('pyright', { capabilities = capabilities })
+vim.lsp.config('vimls', { capabilities = capabilities })
+vim.lsp.config('yamlls', { capabilities = capabilities })
+vim.lsp.config('lua_ls', {
   capabilities = capabilities,
   settings = {
     Lua = {
@@ -35,7 +28,20 @@ lspconfig.lua_ls.setup {
       },
     },
   },
-}
+})
+
+local servers = { 'bashls', 'dockerls', 'jsonls', 'pyright', 'vimls', 'yamlls', 'lua_ls' }
+
+if vim.fn.executable('gopls') == 1 then
+  vim.lsp.config('gopls', { capabilities = capabilities })
+  table.insert(servers, 'gopls')
+end
+if vim.fn.executable('ruff') == 1 then
+  vim.lsp.config('ruff', { capabilities = capabilities })
+  table.insert(servers, 'ruff')
+end
+
+vim.lsp.enable(servers)
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
