@@ -19,7 +19,18 @@ $ ln -s ~/.vim ~/.config/nvim
 $ nvim
 ```
 
-When nvim starts for the first time, it will install vim-plug and, after
-loading, will run `:PlugInstall` to install all plugins. Most of the plugins
-will be loaded after quitting the PlugInstall window, but it is recommended to
-restart nvim to make sure everything is loaded.
+This configuration requires Neovim 0.12 or newer and uses the built-in
+`vim.pack` plugin manager. When nvim starts for the first time, it will install
+the plugins listed in `lua/elyezer/plugins.lua`. Restart nvim afterward to make
+sure everything is loaded.
+
+To update plugins, run:
+
+```console
+:lua vim.pack.update()
+```
+
+Plugin revisions are pinned in `nvim-pack-lock.json`, so a fresh clone
+installs the exact versions this configuration was last tested with.
+After updating, review the changes to the lock file and commit them
+once everything is working.

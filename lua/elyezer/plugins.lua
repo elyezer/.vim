@@ -1,70 +1,32 @@
-local ensure_packer = function()
-  local cmd = vim.cmd
-  local fn = vim.fn
-  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-  if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
-    cmd('packadd packer.nvim')
-    return true
-  end
-  return false
-end
-
-local packer_bootstrap = ensure_packer()
-
-return require('packer').startup(function(use)
-  use 'wbthomason/packer.nvim'
-
-  use {
-    'L3MON4D3/LuaSnip',
-    requires = 'honza/vim-snippets',
-  }
-  use 'lukas-reineke/indent-blankline.nvim'
-  use 'airblade/vim-gitgutter'
-  use 'cohama/lexima.vim'
-  use {
-    'nvim-lualine/lualine.nvim',
-    requires = { 'kyazdani42/nvim-web-devicons', opt = true  },
-  }
-  use 'janko-m/vim-test'
-  use 'jmcantrell/vim-virtualenv'
-  use 'sheerun/vim-polyglot'
-  use 'tpope/vim-abolish'
-  use 'tpope/vim-fugitive'
-  use 'tpope/vim-repeat'
-  use 'tpope/vim-surround'
-  use 'tpope/vim-unimpaired'
-  use 'numToStr/Comment.nvim'
-  use 'neovim/nvim-lspconfig'
-
-  use {
-    'hrsh7th/nvim-cmp',
-    requires = {
-      'hrsh7th/cmp-buffer',
-      'hrsh7th/cmp-nvim-lsp',
-      'hrsh7th/cmp-nvim-lua',
-      'hrsh7th/cmp-path',
-      'saadparwaiz1/cmp_luasnip',
-      'onsails/lspkind.nvim',
-    },
-  }
-
-  use 'nvim-lua/popup.nvim'
-  use 'nvim-lua/plenary.nvim'
-  use 'nvim-telescope/telescope.nvim'
-
-  use {
-    'nvim-treesitter/nvim-treesitter',
-    requires = 'nvim-treesitter/nvim-treesitter-textobjects',
-    run = ':TSUpdate',
-  }
-
-  -- Colorschemes
-  use 'gruvbox-community/gruvbox'
-
-  -- Automatically set up your configuration after cloning packer.nvim
-  -- Put this at the end after all plugins
-  if packer_bootstrap then
-    require('packer').sync()
-  end
-end)
+vim.pack.add({
+  'https://github.com/honza/vim-snippets',
+  'https://github.com/L3MON4D3/LuaSnip',
+  'https://github.com/lukas-reineke/indent-blankline.nvim',
+  'https://github.com/airblade/vim-gitgutter',
+  'https://github.com/cohama/lexima.vim',
+  'https://github.com/kyazdani42/nvim-web-devicons',
+  'https://github.com/nvim-lualine/lualine.nvim',
+  'https://github.com/janko-m/vim-test',
+  'https://github.com/jmcantrell/vim-virtualenv',
+  'https://github.com/sheerun/vim-polyglot',
+  'https://github.com/tpope/vim-abolish',
+  'https://github.com/tpope/vim-fugitive',
+  'https://github.com/tpope/vim-repeat',
+  'https://github.com/tpope/vim-surround',
+  'https://github.com/tpope/vim-unimpaired',
+  'https://github.com/numToStr/Comment.nvim',
+  'https://github.com/neovim/nvim-lspconfig',
+  'https://github.com/hrsh7th/nvim-cmp',
+  'https://github.com/hrsh7th/cmp-buffer',
+  'https://github.com/hrsh7th/cmp-nvim-lsp',
+  'https://github.com/hrsh7th/cmp-nvim-lua',
+  'https://github.com/hrsh7th/cmp-path',
+  'https://github.com/saadparwaiz1/cmp_luasnip',
+  'https://github.com/onsails/lspkind.nvim',
+  'https://github.com/nvim-lua/popup.nvim',
+  'https://github.com/nvim-lua/plenary.nvim',
+  'https://github.com/nvim-telescope/telescope.nvim',
+  'https://github.com/nvim-treesitter/nvim-treesitter',
+  'https://github.com/nvim-treesitter/nvim-treesitter-textobjects',
+  'https://github.com/gruvbox-community/gruvbox',
+}, { confirm = false })
